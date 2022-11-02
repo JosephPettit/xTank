@@ -56,7 +56,7 @@ public class ServerRunningPanel extends JPanel {
 		serverIPUpdate.setColumns(8);
 		ipPanel.add(serverIPUpdate);
 
-		btnCopyIP = new JButton("COPY IP");
+		btnCopyIP = new JButton("Copy");
 		ipPanel.add(btnCopyIP);
 	}
 

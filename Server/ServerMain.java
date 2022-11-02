@@ -13,7 +13,6 @@ public class ServerMain {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		System.out.println("print");
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
