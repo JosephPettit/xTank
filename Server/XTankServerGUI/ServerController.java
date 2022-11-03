@@ -23,8 +23,8 @@ public class ServerController {
 			serverFrame.updateLog(e.toString());
 			e.printStackTrace();
 			serverFrame.updateLog(
-					"\nWell this is embaracing, someting went wrong.\n\nPlease close and re-open this window.");
-			serverFrame.displayErrorMessage("Unable to local IP addre \nidk how to fix that... \n¯\\_(ツ)_/¯ ");
+					"\nWell this is embarrassing, something went wrong.\n\nPlease close and re-open this window.");
+			serverFrame.displayErrorMessage("Unable to local IP address \nidk how to fix that... \n¯\\_(ツ)_/¯ ");
 		}
 	}
 

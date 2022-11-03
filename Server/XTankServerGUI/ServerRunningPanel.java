@@ -11,10 +11,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.SwingConstants;
 import java.awt.FlowLayout;
-import java.awt.Image;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class ServerRunningPanel extends JPanel {

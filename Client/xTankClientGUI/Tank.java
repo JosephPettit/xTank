@@ -1,8 +1,6 @@
 package XTankClientGUI;
 
 import java.awt.Image;
-import java.awt.event.KeyEvent;
-
 import javax.swing.ImageIcon;
 
 public class Tank {

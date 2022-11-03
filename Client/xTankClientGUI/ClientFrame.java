@@ -1,12 +1,10 @@
 package XTankClientGUI;
 
-import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 public class ClientFrame extends JFrame {
 
@@ -31,7 +29,7 @@ public class ClientFrame extends JFrame {
 		setContentPane(clientCardPanel);
 	}
 
-	public void displayErrorMesasge(String message) {
+	public void displayErrorMessage(String message) {
 		JOptionPane.showMessageDialog(this, message);
 	}
 		

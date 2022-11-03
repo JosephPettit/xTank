@@ -2,7 +2,8 @@
 package XTankServerGUI;
 
 public enum ServerPanel {
-	SETTINGS_PANEL("ServerSettingsPanel"), RUNNING_PANEL("ServerRunningPanel");
+	SETTINGS_PANEL("ServerSettingsPanel"), 
+	RUNNING_PANEL("ServerRunningPanel");
 
 	private final String panelName;
 

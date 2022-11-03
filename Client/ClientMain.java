@@ -22,9 +22,7 @@ public class ClientMain {
 				clientFrame = new ClientFrame();
 
 				ClientController controller = new ClientController(clientFrame, clientModel);
-				
 				clientFrame.setVisible(true);
-
 			}
 		});
 	}
