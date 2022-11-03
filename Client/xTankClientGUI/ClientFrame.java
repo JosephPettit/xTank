@@ -1,4 +1,4 @@
-package xTankClientGUI;
+package XTankClientGUI;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;

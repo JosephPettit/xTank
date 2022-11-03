@@ -2,9 +2,9 @@
 
 import java.awt.EventQueue;
 
-import xTankClientGUI.ClientController;
-import xTankClientGUI.ClientFrame;
-import xTankClientGUI.ClientModel;
+import XTankClientGUI.ClientController;
+import XTankClientGUI.ClientFrame;
+import XTankClientGUI.ClientModel;
 
 public class ClientMain {
 
