@@ -26,23 +26,20 @@ ActionListener is passed through View-Frame and to object
 class ClientFrame{
     SandBoxGamePanel gamePanel = new SandBoxGamePanel();
 
-    public void addGamePanelTimerListner(ActionListener actionListener){
+    public void addGamePanelTimerListener(ActionListener actionListener){
         gamePanel.addGameTimerListener(actionListener);
     }
 }
 ```
 
-When Frame is initialized, action listener is initialized and passed through frame and to intended object for listening.
+When Controller is initialized, action listener is initialized and passed through frame and to intended object for listening.
 
 All calculations (work) is then done by the model.
 
 ```java
 class ClientController{
     ClientFrame clientFrame = new ClientFame();
-
-    ClientFrame(){
-        setupActionListeners();
-    }
+    ClientModel clientModel = new ClientModel();
 
     setupActionListeners(){
         addGameTimerListener();
