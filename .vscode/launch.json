@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch ClientMain",
+            "request": "launch",
+            "mainClass": "ClientMain",
+            "projectName": "xTank_95ea14fb"
+        },
+        {
+            "type": "java",
             "name": "Launch ServerMain",
             "request": "launch",
             "mainClass": "ServerMain",
