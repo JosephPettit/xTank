@@ -54,6 +54,5 @@ public class ClientFrame extends JFrame {
 
 	public void addGamePanelTimerListener(ActionListener actionListener) {
 		gamePanel.addGameTimerListener(actionListener);
-		
 	}
 }
