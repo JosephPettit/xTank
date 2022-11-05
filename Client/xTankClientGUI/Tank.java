@@ -1,10 +1,10 @@
-package XTankClientGUI;
+package xTankClientGUI;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
 public class Tank {
-	private String craft = "greenTank.png";
+	private String craft = "Assets/yellowTank.png";
 
 	private double mDx;
 	private double mDy;

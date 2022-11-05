@@ -1,4 +1,4 @@
-package XTankClientGUI;
+package xTankClientGUI;
 
 import java.awt.Color;
 import java.awt.Graphics;
