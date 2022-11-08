@@ -1,4 +1,4 @@
-package xTankSandboxClientGUI;
+package xTankClientGUI;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -12,7 +12,7 @@ import java.awt.geom.AffineTransform;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-public class SandboxGamePanel extends JPanel {
+public class GamePanel extends JPanel {
 
 
 	private Timer timer;
@@ -24,7 +24,7 @@ public class SandboxGamePanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public SandboxGamePanel() {
+	public GamePanel() {
 		setBackground(Color.BLACK);
 		timer = new Timer(5, null);
 		timer.start();

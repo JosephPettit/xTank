@@ -1,11 +1,9 @@
 package xTankClientGUI;
 
-
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
 import SharedResources.TankData;
-
 
 public class Tank {
 	private String craft = "Assets/yellowTank.png";
@@ -19,7 +17,7 @@ public class Tank {
 		this.data = data;
 	}
 
-	public void updateTank(TankData data){
+	public void updateTank(TankData data) {
 		this.data = data;
 	}
 
@@ -43,7 +41,7 @@ public class Tank {
 	public int getmDr() {
 		return data.getmDr();
 	}
-	
+
 	public double getmX() {
 		return data.getmX();
 	}
@@ -51,11 +49,11 @@ public class Tank {
 	public double getmY() {
 		return data.getmY();
 	}
-	
+
 	public void setmR(int mR) {
 		data.setmR(mR);
 	}
-	
+
 	public void setmX(double mX) {
 		data.setmX(mX);
 	}
@@ -63,22 +61,23 @@ public class Tank {
 	public void setmY(double mY) {
 		data.setmY(mY);
 	}
-		
+
 	public void setmDy(double mDy) {
 		data.setmDy(mDy);
 	}
-	
+
 	public void setmDr(int mDr) {
-		data.setmDr(mDr);;
+		data.setmDr(mDr);
+		;
 	}
-	
+
 	public void setmDx(double mDx) {
 		data.setmDx(mDx);
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Tank [craft=" + craft + ", data=" + data + ", mImage=" + mImage + "]";
 	}
-			
+
 }

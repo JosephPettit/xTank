@@ -11,7 +11,7 @@ public class ClientFrame extends JFrame {
 	static final int GAME_WIDTH = 1280;
 	static final int GAME_HEIGHT = 720;
 	private ClientCardPanel clientCardPanel;
-	private SandboxGamePanel gamePanel;
+	private GamePanel gamePanel;
 
 	/**
 	 * Create the frame.
@@ -40,7 +40,7 @@ public class ClientFrame extends JFrame {
 	private void setupPanels() {
 		clientCardPanel = new ClientCardPanel();
 		add(clientCardPanel);
-		gamePanel = new SandboxGamePanel();
+		gamePanel = new GamePanel();
 		clientCardPanel.addCard(gamePanel);
 	}
 	

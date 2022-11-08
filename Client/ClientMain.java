@@ -1,4 +1,10 @@
-package xTankClientGUI;
+
+
+import xTankClientGUI.ClientController;
+import xTankClientGUI.ClientFrame;
+import xTankClientGUI.ClientModel;
+import xTankClientGUI.ServerModel;
+
 public class ClientMain {
 
 	private static ClientFrame clientFrame;
