@@ -1,10 +1,10 @@
-package XTankClientGUI;
+package xTankClientGUI;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
 public class Tank {
-	private String craft = "greenTank.png";
+	private String craft = "Assets/greenTank.png";
 
 	private double mDx;
 	private double mDy;
@@ -38,7 +38,7 @@ public class Tank {
 	public int getmDr() {
 		return mDr;
 	}
-	
+
 	public double getmX() {
 		return mX;
 	}
@@ -46,11 +46,11 @@ public class Tank {
 	public double getmY() {
 		return mY;
 	}
-	
+
 	public void setmR(int mR) {
 		this.mR = mR;
 	}
-	
+
 	public void setmX(double mX) {
 		this.mX = mX;
 	}
@@ -58,11 +58,11 @@ public class Tank {
 	public void setmY(double mY) {
 		this.mY = mY;
 	}
-	
+
 	public void setmDy(double mDy) {
 		this.mDy = mDy;
 	}
-	
+
 	public void setmDr(int mDr) {
 		this.mDr = mDr;
 	}
@@ -76,5 +76,5 @@ public class Tank {
 		return "Tank [craft=" + craft + ", mDx=" + mDx + ", mDy=" + mDy + ", mX=" + mX + ", mY=" + mY + ", mR=" + mR
 				+ ", mDr=" + mDr + ", mImage=" + mImage + "]";
 	}
-		
+
 }

@@ -1,4 +1,4 @@
-package XTankClientGUI;
+package xTankClientGUI;
 
 public class ClientModel {
 	private static Tank tank;

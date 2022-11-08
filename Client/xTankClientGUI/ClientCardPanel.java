@@ -1,4 +1,4 @@
-package XTankClientGUI;
+package xTankClientGUI;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
