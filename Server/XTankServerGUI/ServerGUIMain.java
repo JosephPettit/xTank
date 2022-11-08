@@ -14,7 +14,7 @@ public class ServerGUIMain {
 			public void run() {
 				try {
 					ServerGUIMain window = new ServerGUIMain();
-					ServerModel model = new ServerModel();
+					ServerGUIModel model = new ServerGUIModel();
 
 					ServerController controller = new ServerController(window.serverFrame, model);
 					window.serverFrame.setVisible(true);

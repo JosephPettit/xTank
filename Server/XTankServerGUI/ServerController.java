@@ -9,10 +9,10 @@ import java.net.UnknownHostException;
 
 public class ServerController {
 	private ServerFrame serverFrame;
-	private ServerModel serverModel;
+	private ServerGUIModel serverModel;
 	boolean running = true;
 
-	public ServerController(ServerFrame serverFrame, ServerModel serverModel) {
+	public ServerController(ServerFrame serverFrame, ServerGUIModel serverModel) {
 		this.serverFrame = serverFrame;
 		this.serverModel = serverModel;
 

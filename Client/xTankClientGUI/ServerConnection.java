@@ -20,12 +20,15 @@ public class ServerConnection {
     public void connectToServer(String ipAddress) throws UnknownHostException, IOException, ClassNotFoundException {
         socket = new Socket(ipAddress, 58901);
         System.out.println("Connected to " + socket.getInetAddress().getHostName());
-        String[] strArr = { "Green", "Yellow" };
-        JOptionPane.showInputDialog(null, "Connected to " + ipAddress + "\n choose Tank color from list below",
-                "Tank Selection",
-                JOptionPane.QUESTION_MESSAGE, null, strArr, strArr[0]);
+
         objIn = new ObjectInputStream(socket.getInputStream());
         objOut = new ObjectOutputStream(socket.getOutputStream());
+
+        String[] strArr = (String[]) objIn.readObject();
+        objOut.writeObject(JOptionPane.showInputDialog(null,
+                "Connected to " + socket.getInetAddress().getHostAddress() + "\n choose Tank color from list below",
+                "Tank Selection",
+                JOptionPane.QUESTION_MESSAGE, null, strArr, strArr[0]));
 
         System.out.println(objIn.readObject());
         objOut.writeObject("Hello from client");
