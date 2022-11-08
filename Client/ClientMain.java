@@ -1,24 +1,18 @@
 
-
 import xTankClientGUI.ClientController;
 import xTankClientGUI.ClientFrame;
 import xTankClientGUI.ClientModel;
-import xTankClientGUI.ServerModel;
+import xTankClientGUI.ServerConnection;
 
 public class ClientMain {
 
+	private static ServerConnection serverConnection;
 	private static ClientFrame clientFrame;
-	private static ClientModel clientModel;
 	private static ClientController clientController;
-	private static ServerModel serverModel;
-
-
 
 	public static void main(String[] args) {
-		serverModel = new ServerModel();
-		// clientModel = new ClientModel();			
+		serverConnection = new ServerConnection();
 		clientFrame = new ClientFrame();
-		clientController = new ClientController(clientFrame, serverModel);
-		System.out.println("Main - " + Thread.currentThread().getName());
+		clientController = new ClientController(clientFrame, serverConnection);
 	}
 }

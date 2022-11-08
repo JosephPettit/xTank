@@ -26,7 +26,6 @@ public class Tank {
 	}
 
 	public Image getImage() {
-		// return new ImageIcon(getClass().getResource(craft)).getImage();
 		return mImage;
 	}
 
