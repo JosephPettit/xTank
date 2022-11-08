@@ -1,80 +1,84 @@
 package xTankClientGUI;
 
+
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
+import SharedResources.TankData;
+
+
 public class Tank {
-	private String craft = "Assets/greenTank.png";
+	private String craft = "Assets/yellowTank.png";
 
-	private double mDx;
-	private double mDy;
-	private double mX;
-	private double mY;
-	private int mR;
-	private int mDr;
-
+	private TankData data;
 	private Image mImage;
 
-	public Tank() {
+	public Tank(TankData data) {
 		ImageIcon ii = new ImageIcon(getClass().getResource(craft));
 		mImage = ii.getImage();
-		mX = 40;
-		setmY(60);
-		setmR(0);
+		this.data = data;
+	}
+
+	public void updateTank(TankData data){
+		this.data = data;
+	}
+
+	public TankData getData() {
+		return data;
 	}
 
 	public Image getImage() {
+		// return new ImageIcon(getClass().getResource(craft)).getImage();
 		return mImage;
 	}
 
 	public int getmR() {
-		return mR;
+		return data.getmR();
 	}
 
 	public double getmDy() {
-		return mDy;
+		return data.getmDy();
 	}
 
 	public int getmDr() {
-		return mDr;
+		return data.getmDr();
 	}
-
+	
 	public double getmX() {
-		return mX;
+		return data.getmX();
 	}
 
 	public double getmY() {
-		return mY;
+		return data.getmY();
 	}
-
+	
 	public void setmR(int mR) {
-		this.mR = mR;
+		data.setmR(mR);
 	}
-
+	
 	public void setmX(double mX) {
-		this.mX = mX;
+		data.setmX(mX);
 	}
 
 	public void setmY(double mY) {
-		this.mY = mY;
+		data.setmY(mY);
 	}
-
+		
 	public void setmDy(double mDy) {
-		this.mDy = mDy;
+		data.setmDy(mDy);
 	}
-
+	
 	public void setmDr(int mDr) {
-		this.mDr = mDr;
+		data.setmDr(mDr);;
 	}
-
+	
 	public void setmDx(double mDx) {
-		this.mDx = mDx;
+		data.setmDx(mDx);
 	}
-
+	
 	@Override
 	public String toString() {
-		return "Tank [craft=" + craft + ", mDx=" + mDx + ", mDy=" + mDy + ", mX=" + mX + ", mY=" + mY + ", mR=" + mR
-				+ ", mDr=" + mDr + ", mImage=" + mImage + "]";
+		return "Tank [craft=" + craft + ", data=" + data + ", mImage=" + mImage + "]";
 	}
-
+			
 }

@@ -1,12 +1,9 @@
+package xTankSandboxClientGUI;
 
 
 import java.awt.EventQueue;
 
-import xTankClientGUI.ClientController;
-import xTankClientGUI.ClientFrame;
-import xTankClientGUI.ClientModel;
-
-public class ClientMain {
+public class ClientSandBoxMain {
 
 	private static ClientFrame clientFrame;
 	private static ClientModel clientModel;
@@ -30,7 +27,7 @@ public class ClientMain {
 	/**
 	 * Create the application.
 	 */
-	public ClientMain() {
+	public ClientSandBoxMain() {
 		initialize();
 	}
 

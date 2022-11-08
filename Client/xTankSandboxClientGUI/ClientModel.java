@@ -1,15 +1,14 @@
-package xTankClientGUI;
+package xTankSandboxClientGUI;
 
 public class ClientModel {
 	private static Tank tank;
 	
 	public ClientModel(){
-		tank = new Tank(null);
+		tank = new Tank();
 	}
-	
 	public Tank getTank() {
 		if(tank == null)
-			return new Tank(null);
+			return new Tank();
 		return tank;
 	}
 
