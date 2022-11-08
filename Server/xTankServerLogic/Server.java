@@ -45,36 +45,4 @@ public class Server implements Runnable {
     }
 
   }
-
-  // private TankData tankAction(TankData tank) {
-  // moveTank(tank);
-  // checkCollision(tank);
-  // return tank;
-  // }
-
-  // private TankData moveTank(TankData tank) {
-  // tank.setmR((tank.getmR() + (tank.getmDy() < 0 ? -1 * tank.getmDr() :
-  // tank.getmDr())) % 360);
-  // tank.setmX(tank.getmX() + ((tank.getmDy()) *
-  // Math.cos(Math.toRadians(tank.getmR()))));
-  // tank.setmY(tank.getmY() + ((tank.getmDy()) *
-  // Math.sin(Math.toRadians(tank.getmR()))));
-  // return tank;
-  // }
-
-  // private TankData checkCollision(TankData tank) {
-  // if (tank.getmX() >= width - 30) {
-  // tank.setmX(0);
-  // } else if (tank.getmX() <= 0) {
-  // tank.setmX(width - 30);
-  // }
-
-  // if (tank.getmY() <= 0) {
-  // tank.setmY(height - 110);
-  // } else if (tank.getmY() > height - 110) {
-  // tank.setmY(0);
-  // }
-
-  // return tank;
-  // }
 }

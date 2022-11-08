@@ -30,7 +30,6 @@ public class ClientConnection implements Runnable {
             System.out.println(objIn.readObject());
             TankData tank = new TankData();
             while (tank != null) {
-                // System.out.println("Server out " + tank);
                 tank = (TankData) objIn.readObject();
                 objOut.writeObject(tankAction(tank));
             }
