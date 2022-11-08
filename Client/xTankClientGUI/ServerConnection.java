@@ -16,15 +16,6 @@ public class ServerConnection {
     private ObjectInputStream objIn;
     private ObjectOutputStream objOut;
 
-    public ServerConnection() {
-        try {
-            connectToServer("localhost");
-        } catch (IOException | ClassNotFoundException e) {
-            new JDialog().add(new JLabel(e.toString()));
-
-        }
-    }
-
     public void connectToServer(String ipAddress) throws UnknownHostException, IOException, ClassNotFoundException {
         socket = new Socket(ipAddress, 58901);
         System.out.println("Connected to " + socket.getInetAddress().getHostName());
