@@ -2,13 +2,13 @@ package xTankClientGUI;
 
 public class ClientModel {
 	private static Tank tank;
-	
-	public ClientModel(){
+
+	public ClientModel() {
 		tank = new Tank(null);
 	}
-	
+
 	public Tank getTank() {
-		if(tank == null)
+		if (tank == null)
 			return new Tank(null);
 		return tank;
 	}
@@ -18,21 +18,19 @@ public class ClientModel {
 		tank.setmX(tank.getmX() + ((tank.getmDy()) * Math.cos(Math.toRadians(tank.getmR()))));
 		tank.setmY(tank.getmY() + ((tank.getmDy()) * Math.sin(Math.toRadians(tank.getmR()))));
 	}
-	
+
 	public void checkCollision() {
-		if(tank.getmX() >= ClientFrame.GAME_WIDTH - 30){
+		if (tank.getmX() >= ClientFrame.GAME_WIDTH - 30) {
 			tank.setmX(0);
-		}
-		else if(tank.getmX() <= 0){
+		} else if (tank.getmX() <= 0) {
 			tank.setmX(ClientFrame.GAME_WIDTH - 30);
 		}
 
-		if(tank.getmY() <= 0){
+		if (tank.getmY() <= 0) {
 			tank.setmY(ClientFrame.GAME_HEIGHT - 110);
-		}
-		else if(tank.getmY() > ClientFrame.GAME_HEIGHT - 110){
+		} else if (tank.getmY() > ClientFrame.GAME_HEIGHT - 110) {
 			tank.setmY(0);
 		}
 	}
-	
+
 }

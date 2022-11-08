@@ -43,7 +43,6 @@ public class ClientController {
         new KeyAdapter() {
           public void keyReleased(KeyEvent e) {
             int key = e.getKeyCode();
-            System.out.println("key");
             if ((key == KeyEvent.VK_LEFT) || (key == KeyEvent.VK_RIGHT)) {
               tank.setmDr(0);
             }
