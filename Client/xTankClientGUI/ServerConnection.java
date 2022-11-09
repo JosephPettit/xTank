@@ -23,25 +23,25 @@ public class ServerConnection {
         objIn = new ObjectInputStream(socket.getInputStream());
         objOut = new ObjectOutputStream(socket.getOutputStream());
 
+        // handshake between client and server 
+        // Client <- Server: list of available colors from server 
         String[] strArr = (String[]) objIn.readObject();
-
+        // Client -> Server: color selection from dialog 
         objOut.writeObject(JOptionPane.showInputDialog(null,
                 "Connected to " + socket.getInetAddress().getHostAddress() + "\n choose Tank color from list below",
                 "Tank Selection",
                 JOptionPane.QUESTION_MESSAGE, null, strArr, strArr[0]));
-        //
+       
+        // tank from gameState
         initialData = (TankData) objIn.readObject();
-        System.out.println("TankData from server" + initialData);
+        // System.out.println("TankData from server" + initialData);
+
+        // Handshake complete confirmation 
         System.out.println(objIn.readObject());
         objOut.writeObject("Hello from client");
-        // objOut.writeObject(new TankData());
-        // System.out.println(objIn.readObject().toString());
 
+        // Waits for thread to be started. 
     }
-
-    // public TankData getTank() throws ClassNotFoundException, IOException {
-    //     return (TankData) objIn.readObject();
-    // }
 
     public TankData updateTank(TankData tank) throws ClassNotFoundException, IOException {
         objOut.writeObject(tank);

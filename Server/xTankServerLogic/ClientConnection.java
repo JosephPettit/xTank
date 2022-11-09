@@ -30,12 +30,15 @@ public class ClientConnection implements Runnable {
             System.out.println("connected to " + socket.getInetAddress().getHostName());
 
             // Handshake between client and server
-
+            // server -> client: color list; server <- client: color selection
             tank = serverModel.startingTank(serverModel.clientTankSelection(objIn, objOut));
+            // server -> client: tank from gameState 
             objOut.writeObject(tank);
 
+            // Handshake complete confirmation 
             objOut.writeObject("Hello from Server");
-            System.out.println(objIn.readObject());
+            System.out.println(objIn.readObject()); // hello from client 
+
             while (tank != null) {
                 tank = (TankData) objIn.readObject();
                 objOut.writeObject(tankAction(tank));
