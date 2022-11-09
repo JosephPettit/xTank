@@ -4,8 +4,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.concurrent.Executor;
+
+import SharedResources.TankData;
 
 public class ServerModel {
     private ArrayList<ClientConnection> clientConnections;
@@ -31,6 +32,10 @@ public class ServerModel {
         for (ClientConnection connection : clientConnections) {
             pool.execute(connection);
         }
+    }
+
+    public TankData startingTank(String color) {
+        return new TankData(color, clientConnections.size());
     }
 
     private String[] getColors() {

@@ -6,13 +6,13 @@ import javax.swing.ImageIcon;
 import SharedResources.TankData;
 
 public class Tank {
-	private String craft = "Assets/yellowTank.png";
+	// private String craft = "Assets/yellowTank.png";
 
 	private TankData data;
 	private Image mImage;
 
 	public Tank(TankData data) {
-		ImageIcon ii = new ImageIcon(getClass().getResource(craft));
+		ImageIcon ii = new ImageIcon(getClass().getResource(data.getTankColor()));
 		mImage = ii.getImage();
 		this.data = data;
 	}
@@ -76,7 +76,9 @@ public class Tank {
 
 	@Override
 	public String toString() {
-		return "Tank [craft=" + craft + ", data=" + data + ", mImage=" + mImage + "]";
+		return "Tank [data=" + data + ", mImage=" + mImage + "]";
 	}
+
+	
 
 }

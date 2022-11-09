@@ -25,7 +25,7 @@ public class ClientController {
   }
 
   private Tank initialTank() {
-    return new Tank(new TankData());
+    return new Tank(serverConnection.getInitialTankData());
     // return null;
   }
 
