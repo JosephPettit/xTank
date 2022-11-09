@@ -1,28 +1,15 @@
 package xTankServerLogic;
 
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
-import SharedResources.TankData;
 
 public class Server implements Runnable {
 
-  private int width = 1200;
-  private int height = 720;
-  // private Socket client1;
-  private ObjectInputStream objIn;
-  private ObjectOutputStream objOut;
   private ServerModel serverModel;
-  private Executor pool;
 
   public Server(Executor pool) {
-    this.pool = pool;
     serverModel = new ServerModel(pool);
   }
 

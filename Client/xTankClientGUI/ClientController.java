@@ -6,8 +6,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 
-import SharedResources.TankData;
-
 public class ClientController {
 
   private ClientFrame clientFrame;
