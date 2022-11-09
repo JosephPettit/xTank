@@ -6,6 +6,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.concurrent.Executor;
 
+import SharedResources.GameState;
 import SharedResources.TankData;
 
 public class ServerModel {
@@ -13,9 +14,11 @@ public class ServerModel {
     private Executor pool;
     private ArrayList<String> tankColors;
     private int numPlayers;
+    private GameState gameState;
 
     public ServerModel(Executor pool) {
         this.pool = pool;
+        this.gameState = new GameState();
         clientConnections = new ArrayList<>();
         tankColors = new ArrayList<>();
         tankColors.add("Yellow");
@@ -36,8 +39,7 @@ public class ServerModel {
     }
 
     public TankData startingTank(String color) {
-        TankData tank = new TankData(color, numPlayers++);
-        return tank;
+        return gameState.addPlayer(color, numPlayers++);
     }
 
     private String[] getColors() {
