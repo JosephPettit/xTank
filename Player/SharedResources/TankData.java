@@ -12,10 +12,56 @@ public class TankData implements Serializable {
     private int mR;
     private int mDr;
 
-    public TankData() {
+    private final String tankColor;
+
+    private final int playerNumber;
+
+    public TankData(String tankColor, int playerNumber) {
+        this.tankColor = assignColor(tankColor);
+        this.playerNumber = playerNumber;
+
+        // assignColor();
+        assignStartingLocation();
         mX = 40;
         mY = 60;
         mR = 0;
+    }
+
+    private String assignColor(String tankColor) {
+        return switch (tankColor) {
+            case "Yellow" -> {
+                yield "Assets/yellowTank.png";
+            }
+            case "Red" -> {
+                yield "Assets/redTank.png";
+            }
+            case "Blue" -> {
+                yield "Assets/blueTank.png";
+            }
+            case "Green" -> {
+                yield "Assets/greenTank.png";
+            }
+            default -> null;
+        };
+    }
+
+    private void assignStartingLocation() {
+        switch (playerNumber) {
+            case 0 -> {
+                mX = 40;
+                mY = 60;
+                mR = 0;
+            }
+            case 1 -> {
+                mX = 240;
+                mY = 60;
+                mR = 180;
+            }
+        }
+    }
+
+    public String getTankColor() {
+        return tankColor;
     }
 
     public double getmDx() {
@@ -69,7 +115,7 @@ public class TankData implements Serializable {
     @Override
     public String toString() {
         return "TankData [mDx=" + mDx + ", mDy=" + mDy + ", mX=" + mX + ", mY=" + mY + ", mR=" + mR + ", mDr=" + mDr
-                + "]";
+                + ", tankColor=" + tankColor + ", playerNumber=" + playerNumber + "]";
     }
 
 }

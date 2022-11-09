@@ -18,12 +18,12 @@ public class Server implements Runnable {
   // private Socket client1;
   private ObjectInputStream objIn;
   private ObjectOutputStream objOut;
-  private ServerLogic serverLogic;
+  private ServerModel serverModel;
   private Executor pool;
 
   public Server(Executor pool) {
     this.pool = pool;
-    serverLogic = new ServerLogic(pool);
+    serverModel = new ServerModel(pool);
   }
 
   @Override
@@ -33,18 +33,18 @@ public class Server implements Runnable {
       System.out.println("Waiting for client1");
       Socket socket = listener.accept();
       System.out.println("connected to " + socket.getInetAddress().getHostAddress());
-      ClientConnection clientConnection1 = new ClientConnection(socket);
+      ClientConnection clientConnection1 = new ClientConnection(socket, serverModel);
 
       System.out.println("Waiting for client2");
       socket = listener.accept();
       System.out.println("connected to " + socket.getInetAddress().getHostAddress());
-      ClientConnection clientConnection2 = new ClientConnection(socket);
+      ClientConnection clientConnection2 = new ClientConnection(socket, serverModel);
       System.out.println("Adding clients to server");
-      serverLogic.addConnection(clientConnection1);
-      serverLogic.addConnection(clientConnection2);
+      serverModel.addConnection(clientConnection1);
+      serverModel.addConnection(clientConnection2);
 
       System.out.println("Starting Server");
-      serverLogic.startConnections();
+      serverModel.startConnections();
 
     } catch (IOException e) {
       e.printStackTrace();

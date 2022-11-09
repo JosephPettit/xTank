@@ -15,10 +15,11 @@ public class ClientConnection implements Runnable {
     private ObjectInputStream objIn;
     private ObjectOutputStream objOut;
     private TankData tank;
+    private ServerModel serverModel;
 
-    ClientConnection(Socket socket) throws IOException {
+    ClientConnection(Socket socket, ServerModel serverModel) throws IOException {
         this.socket = socket;
-        tank = new TankData();
+        this.serverModel = serverModel;
     }
 
     @Override
@@ -29,9 +30,12 @@ public class ClientConnection implements Runnable {
             System.out.println("connected to " + socket.getInetAddress().getHostName());
 
             // Handshake between client and server
+
+            tank = serverModel.startingTank(serverModel.clientTankSelection(objIn, objOut));
+            objOut.writeObject(tank);
+
             objOut.writeObject("Hello from Server");
             System.out.println(objIn.readObject());
-            tank = new TankData();
             while (tank != null) {
                 tank = (TankData) objIn.readObject();
                 objOut.writeObject(tankAction(tank));
@@ -41,9 +45,6 @@ public class ClientConnection implements Runnable {
         }
     }
 
-    public void displayConnected(){
-        
-    }
     private TankData tankAction(TankData tank) {
         moveTank(tank);
         checkCollision(tank);

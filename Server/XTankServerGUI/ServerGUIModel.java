@@ -4,7 +4,7 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.UnknownHostException;
 
-public class ServerModel {
+public class ServerGUIModel {
 	private int players;
 	private String IPAddress;
 	private ServerSocket serverSocket;
