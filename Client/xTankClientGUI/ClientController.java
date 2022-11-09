@@ -67,12 +67,6 @@ public class ClientController {
             if (key == KeyEvent.VK_RIGHT) {
               tank.setmDr(1);
             }
-            try {
-              tank.updateTank(serverConnection.updateTank(tank.getData()));
-            } catch (ClassNotFoundException | IOException e1) {
-              clientFrame.displayErrorMessage(e1.toString());
-              e1.printStackTrace();
-            }
           }
         });
   }

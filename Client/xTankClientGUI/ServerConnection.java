@@ -31,7 +31,7 @@ public class ServerConnection {
                 JOptionPane.QUESTION_MESSAGE, null, strArr, strArr[0]));
         //
         initialData = (TankData) objIn.readObject();
-        System.out.println("tank from server" + initialData);
+        System.out.println("TankData from server" + initialData);
         System.out.println(objIn.readObject());
         objOut.writeObject("Hello from client");
         // objOut.writeObject(new TankData());
@@ -39,9 +39,9 @@ public class ServerConnection {
 
     }
 
-    public TankData getTank() throws ClassNotFoundException, IOException {
-        return (TankData) objIn.readObject();
-    }
+    // public TankData getTank() throws ClassNotFoundException, IOException {
+    //     return (TankData) objIn.readObject();
+    // }
 
     public TankData updateTank(TankData tank) throws ClassNotFoundException, IOException {
         objOut.writeObject(tank);

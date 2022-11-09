@@ -12,6 +12,7 @@ public class ServerModel {
     private ArrayList<ClientConnection> clientConnections;
     private Executor pool;
     private ArrayList<String> tankColors;
+    private int numPlayers;
 
     public ServerModel(Executor pool) {
         this.pool = pool;
@@ -21,7 +22,7 @@ public class ServerModel {
         tankColors.add("Green");
         tankColors.add("Blue");
         tankColors.add("Red");
-
+        numPlayers = 0;
     }
 
     public void addConnection(ClientConnection connection) {
@@ -35,7 +36,8 @@ public class ServerModel {
     }
 
     public TankData startingTank(String color) {
-        return new TankData(color, clientConnections.size());
+        TankData tank = new TankData(color, numPlayers++);
+        return tank;
     }
 
     private String[] getColors() {

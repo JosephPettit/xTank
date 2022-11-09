@@ -22,9 +22,7 @@ public class TankData implements Serializable {
 
         // assignColor();
         assignStartingLocation();
-        mX = 40;
-        mY = 60;
-        mR = 0;
+
     }
 
     private String assignColor(String tankColor) {
@@ -53,7 +51,7 @@ public class TankData implements Serializable {
                 mR = 0;
             }
             case 1 -> {
-                mX = 240;
+                mX = 940;
                 mY = 60;
                 mR = 180;
             }

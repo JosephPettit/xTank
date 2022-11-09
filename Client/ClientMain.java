@@ -10,8 +10,6 @@ import xTankClientGUI.ServerConnection;
 public class ClientMain {
 
 	private static ClientFrame clientFrame;
-
-	private static ClientController clientController;
 	private static ServerConnection serverConnection;
 
 	public static void main(String[] args) {
@@ -19,7 +17,7 @@ public class ClientMain {
 		serverConnection = new ServerConnection();
 		connectToServer();
 		clientFrame = new ClientFrame();
-		clientController = new ClientController(clientFrame, serverConnection);
+		new ClientController(clientFrame, serverConnection);
 		System.out.println("Main - " + Thread.currentThread().getName());
 	}
 

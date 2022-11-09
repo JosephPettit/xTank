@@ -16,7 +16,7 @@ public class ServerGUIMain {
 					ServerGUIMain window = new ServerGUIMain();
 					ServerGUIModel model = new ServerGUIModel();
 
-					ServerController controller = new ServerController(window.serverFrame, model);
+					new ServerController(window.serverFrame, model);
 					window.serverFrame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

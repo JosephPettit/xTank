@@ -79,6 +79,4 @@ public class Tank {
 		return "Tank [data=" + data + ", mImage=" + mImage + "]";
 	}
 
-	
-
 }
