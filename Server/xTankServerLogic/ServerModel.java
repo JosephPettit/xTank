@@ -54,4 +54,16 @@ public class ServerModel {
         return selection;
     }
 
+    public int getNumPlayers() {
+        return numPlayers;
+    }
+
+    public synchronized GameState getGameState() {
+        return gameState;
+    }
+
+    public synchronized void setGameState(GameState gameState) {
+        this.gameState = gameState;
+    }
+
 }

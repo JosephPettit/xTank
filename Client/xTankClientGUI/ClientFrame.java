@@ -6,6 +6,8 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import SharedResources.GameState;
+
 public class ClientFrame extends JFrame {
 
 	static final int GAME_WIDTH = 1280;
@@ -23,33 +25,33 @@ public class ClientFrame extends JFrame {
 		setLocationRelativeTo(null);
 		setTitle("X-Tank Client");
 		setResizable(false);
-		
+
 		setupPanels();
-		
+
 		setContentPane(clientCardPanel);
 	}
 
 	public void displayErrorMessage(String message) {
 		JOptionPane.showMessageDialog(this, message);
 	}
-		
+
 	public void cycleCard() {
 		clientCardPanel.cycleCard();
 	}
-	
+
 	private void setupPanels() {
 		clientCardPanel = new ClientCardPanel();
 		add(clientCardPanel);
 		gamePanel = new GamePanel();
 		clientCardPanel.addCard(gamePanel);
 	}
-	
+
 	public void addGamePanelKeyListener(KeyListener listener) {
 		this.addKeyListener(listener);
 	}
-	
-	public void addPlayerTank(Tank tank) {
-		gamePanel.addPlayerTank(tank);
+
+	public void addGameState(GameState gameState) {
+		gamePanel.addGameState(gameState);
 	}
 
 	public void addGamePanelTimerListener(ActionListener actionListener) {

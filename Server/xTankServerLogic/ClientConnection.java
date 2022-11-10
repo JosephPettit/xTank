@@ -5,6 +5,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
+import SharedResources.GameState;
 import SharedResources.TankData;
 
 public class ClientConnection implements Runnable {
@@ -32,36 +33,42 @@ public class ClientConnection implements Runnable {
             // Handshake between client and server
             // server -> client: color list; server <- client: color selection
             tank = serverModel.startingTank(serverModel.clientTankSelection(objIn, objOut));
-            // server -> client: tank from gameState 
-            objOut.writeObject(tank);
 
-            // Handshake complete confirmation 
+            // server -> client: gameState
+            objOut.writeObject(serverModel.getGameState());
+
+            // server -> client: playerNumber 
+            objOut.writeInt(tank.getPlayerNumber());
+
+            // Handshake complete confirmation
             objOut.writeObject("Hello from Server");
-            System.out.println(objIn.readObject()); // hello from client 
+            System.out.println(objIn.readObject()); // hello from client
 
-            while (tank != null) {
-                tank = (TankData) objIn.readObject();
-                objOut.writeObject(tankAction(tank));
+            while (serverModel.getGameState() != null) {
+                serverModel.setGameState((GameState) objIn.readObject());
+                objOut.writeObject(gameUpdate(serverModel.getGameState()));
             }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    private TankData tankAction(TankData tank) {
-        moveTank(tank);
-        checkCollision(tank);
-        return tank;
+    private synchronized GameState gameUpdate(GameState gameState) {
+        for (TankData player : gameState.getPlayers()) {
+            moveTank(player);
+            checkCollision(player);
+        }
+
+        return gameState;
     }
 
-    private TankData moveTank(TankData tank) {
+    private void moveTank(TankData tank) {
         tank.setmR((tank.getmR() + (tank.getmDy() < 0 ? -1 * tank.getmDr() : tank.getmDr())) % 360);
         tank.setmX(tank.getmX() + ((tank.getmDy()) * Math.cos(Math.toRadians(tank.getmR()))));
         tank.setmY(tank.getmY() + ((tank.getmDy()) * Math.sin(Math.toRadians(tank.getmR()))));
-        return tank;
     }
 
-    private TankData checkCollision(TankData tank) {
+    private void checkCollision(TankData tank) {
         if (tank.getmX() >= width - 30) {
             tank.setmX(0);
         } else if (tank.getmX() <= 0) {
@@ -73,8 +80,6 @@ public class ClientConnection implements Runnable {
         } else if (tank.getmY() > height - 110) {
             tank.setmY(0);
         }
-
-        return tank;
     }
 
 }

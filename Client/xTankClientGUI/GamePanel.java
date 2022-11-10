@@ -11,10 +11,14 @@ import java.awt.geom.AffineTransform;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import SharedResources.GameState;
+import SharedResources.TankData;
+
 public class GamePanel extends JPanel {
 
 	private Timer timer;
 	private Tank craft;
+	private GameState gameState;
 
 	AffineTransform identity = new AffineTransform();
 
@@ -30,12 +34,15 @@ public class GamePanel extends JPanel {
 	public void paint(Graphics g) {
 		super.paint(g);
 
-		if (craft != null) {
+		for (TankData data : gameState.getPlayers()) {
+			craft = new Tank(data);
+			// if (craft != null) {
 			Graphics2D g2d = (Graphics2D) g;
 			g2d.rotate(Math.toRadians(craft.getmR()), craft.getmX() + 10, craft.getmY() + 10);
 			g2d.drawImage(craft.getImage(), (int) craft.getmX(), (int) craft.getmY(), this);
+			Toolkit.getDefaultToolkit().sync();
+			// }
 		}
-		Toolkit.getDefaultToolkit().sync();
 		g.dispose();
 	}
 
@@ -43,8 +50,8 @@ public class GamePanel extends JPanel {
 		this.addKeyListener(listenForKey);
 	}
 
-	public void addPlayerTank(Tank tank) {
-		craft = tank;
+	public void addGameState(GameState gameState) {
+		this.gameState = gameState;
 	}
 
 	public void addGameTimerListener(ActionListener actionListener) {

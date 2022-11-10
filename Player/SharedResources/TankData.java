@@ -58,6 +58,10 @@ public class TankData implements Serializable {
         }
     }
 
+    public int getPlayerNumber() {
+        return playerNumber;
+    }
+
     public String getTankColor() {
         return tankColor;
     }
@@ -112,8 +116,8 @@ public class TankData implements Serializable {
 
     @Override
     public String toString() {
-        return "TankData [mDx=" + mDx + ", mDy=" + mDy + ", mX=" + mX + ", mY=" + mY + ", mR=" + mR + ", mDr=" + mDr
-                + ", tankColor=" + tankColor + ", playerNumber=" + playerNumber + "]";
+        return "TankData [\nmDx=" + mDx + ", mDy=" + mDy + ", mX=" + mX + ", mY=" + mY + ", mR=" + mR + ", mDr=" + mDr
+                + ", playerNumber=" + playerNumber + "]";
     }
 
 }

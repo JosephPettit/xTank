@@ -6,29 +6,35 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 
+import SharedResources.GameState;
+import SharedResources.TankData;
+
 public class ClientController {
 
   private ClientFrame clientFrame;
   private ServerConnection serverConnection;
-  private Tank tank;
+  private TankData tank;
+  private GameState gameState;
+  private final int playerNumber;
 
   public ClientController(ClientFrame clientFrame, ServerConnection serverConnection) {
     this.clientFrame = clientFrame;
     this.serverConnection = serverConnection;
     this.clientFrame.cycleCard();
     this.clientFrame.setVisible(true);
-    this.tank = initialTank();
-    addPlayerTank();
+    this.gameState = serverConnection.getInitialGameState();
+    this.playerNumber = serverConnection.getPlayerNumber();
+    this.tank = getGSTank();
+    addGameState();
     setupListeners();
   }
 
-  private Tank initialTank() {
-    return new Tank(serverConnection.getInitialTankData());
-    // return null;
+  private TankData getGSTank() {
+    return gameState.getPlayers().get(playerNumber);
   }
 
-  private void addPlayerTank() {
-    clientFrame.addPlayerTank(tank);
+  private void addGameState() {
+    clientFrame.addGameState(gameState);
   }
 
   private void setupListeners() {
@@ -55,18 +61,17 @@ public class ClientController {
             if (key == KeyEvent.VK_UP) {
               tank.setmDy(1);
             }
-
             if (key == KeyEvent.VK_DOWN) {
               tank.setmDy(-1);
             }
-
             if (key == KeyEvent.VK_LEFT) {
               tank.setmDr(-1);
             }
-
             if (key == KeyEvent.VK_RIGHT) {
               tank.setmDr(1);
             }
+
+            System.out.println("Key pressed " + gameState);
           }
         });
   }
@@ -77,7 +82,9 @@ public class ClientController {
           @Override
           public void actionPerformed(ActionEvent e) {
             try {
-              tank.updateTank(serverConnection.updateTank(tank.getData()));
+              gameState = serverConnection.updateGameState(gameState);
+              tank = gameState.getPlayers().get(playerNumber);
+
               // serverModel.checkCollision(tank.getData());
             } catch (IOException | ClassNotFoundException e1) {
               clientFrame.displayErrorMessage(e1.toString());

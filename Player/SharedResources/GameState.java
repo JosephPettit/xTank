@@ -15,4 +15,19 @@ public class GameState implements Serializable {
         players.add(newPlayer);
         return newPlayer;
     }
+
+    public synchronized ArrayList<TankData> getPlayers() {
+        return players;
+    }
+
+    public synchronized void updatePlayer(TankData player) {
+        players.remove(player.getPlayerNumber());
+        players.add(player.getPlayerNumber(), player);
+    }
+
+    @Override
+    public String toString() {
+        return "GameState [\nplayers=" + players + "\n]";
+    }
+
 }
