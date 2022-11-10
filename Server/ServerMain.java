@@ -1,46 +1,14 @@
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
-import java.awt.EventQueue;
-
-import XTankServerGUI.ServerController;
-import XTankServerGUI.ServerFrame;
-import XTankServerGUI.ServerModel;
+import xTankServerLogic.Server;
 
 public class ServerMain {
 
-	private ServerFrame serverFrame;
-
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ServerMain window = new ServerMain();
-					ServerModel model = new ServerModel();
-
-					ServerController controller = new ServerController(window.serverFrame, model);
-					window.serverFrame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
-	public ServerMain() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		serverFrame = new ServerFrame();
-
+		Executor pool = Executors.newFixedThreadPool(20);
+		Server server = new Server(pool);
+		pool.execute(server);
 	}
 
 }

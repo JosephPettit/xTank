@@ -1,44 +1,48 @@
 
 
-import java.awt.EventQueue;
+import java.io.IOException;
+
+import javax.swing.JOptionPane;
 
 import xTankClientGUI.ClientController;
 import xTankClientGUI.ClientFrame;
-import xTankClientGUI.ClientModel;
+import xTankClientGUI.ServerConnection;
 
 public class ClientMain {
 
 	private static ClientFrame clientFrame;
-	private static ClientModel clientModel;
+	private static ServerConnection serverConnection;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				
-				clientModel = new ClientModel();
-				clientFrame = new ClientFrame();
 
-				ClientController controller = new ClientController(clientFrame, clientModel);
-				clientFrame.setVisible(true);
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
-	public ClientMain() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
+		serverConnection = new ServerConnection();
+		connectToServer();
 		clientFrame = new ClientFrame();
+		new ClientController(clientFrame, serverConnection);
+		System.out.println("Main - " + Thread.currentThread().getName());
+	}
+
+	private static void connectToServer() {
+		String ip = JOptionPane.showInputDialog(null, "Enter Server IP Address:", "Enter Server IP",
+				JOptionPane.QUESTION_MESSAGE);
+		if (ip == null) {
+			System.exit(0);
+		}
+
+		try {
+
+			serverConnection.connectToServer(ip);
+		} catch (ClassNotFoundException | IOException e) {
+
+			int ans = JOptionPane.showConfirmDialog(null, "Failed to connect to server. Would you like to try again?",
+					"Connection Failed", JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE);
+
+			if (ans == JOptionPane.YES_OPTION) {
+				connectToServer();
+			} else {
+				System.exit(0);
+			}
+		}
 	}
 
 }
