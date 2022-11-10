@@ -37,7 +37,7 @@ public class ClientConnection implements Runnable {
             // server -> client: gameState
             objOut.writeObject(serverModel.getGameState());
 
-            // server -> client: playerNumber 
+            // server -> client: playerNumber
             objOut.writeInt(tank.getPlayerNumber());
 
             // Handshake complete confirmation
@@ -66,6 +66,10 @@ public class ClientConnection implements Runnable {
         tank.setmR((tank.getmR() + (tank.getmDy() < 0 ? -1 * tank.getmDr() : tank.getmDr())) % 360);
         tank.setmX(tank.getmX() + ((tank.getmDy()) * Math.cos(Math.toRadians(tank.getmR()))));
         tank.setmY(tank.getmY() + ((tank.getmDy()) * Math.sin(Math.toRadians(tank.getmR()))));
+
+        tank.setmDr(0);
+        tank.setmDx(0);
+        tank.setmDy(0);
     }
 
     private void checkCollision(TankData tank) {
