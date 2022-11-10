@@ -85,6 +85,7 @@ public class ClientController {
               gameState = serverConnection.updateGameState(gameState);
               tank = gameState.getPlayers().get(playerNumber);
               addGameState();
+              // serverModel.checkCollision(tank.getData());
             } catch (IOException | ClassNotFoundException e1) {
               clientFrame.displayErrorMessage(e1.toString());
               e1.printStackTrace();
