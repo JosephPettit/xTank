@@ -33,7 +33,6 @@ public class GamePanel extends JPanel {
 
 	public void paint(Graphics g) {
 		super.paint(g);
-
 		for (TankData data : gameState.getPlayers()) {
 			craft = new Tank(data);
 			// if (craft != null) {
