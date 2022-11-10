@@ -1,5 +1,4 @@
 package xTankClientGUI;
-package xTankClientGUI;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -7,7 +6,6 @@ import javax.swing.ImageIcon;
 import SharedResources.TankData;
 
 public class Tank {
-	private String craft = "Assets/yellowTank.png";
 	// private String craft = "Assets/yellowTank.png";
 
 	private TankData data;
