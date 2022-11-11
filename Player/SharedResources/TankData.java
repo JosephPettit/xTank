@@ -1,8 +1,9 @@
 package SharedResources;
 
+import java.awt.Rectangle;
 import java.io.Serializable;
 
-public class TankData implements Serializable {
+public class TankData extends Rectangle implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private double mDx;
@@ -19,8 +20,7 @@ public class TankData implements Serializable {
     public TankData(String tankColor, int playerNumber) {
         this.tankColor = assignColor(tankColor);
         this.playerNumber = playerNumber;
-
-        // assignColor();
+        setSize(20, 20);
         assignStartingLocation();
 
     }

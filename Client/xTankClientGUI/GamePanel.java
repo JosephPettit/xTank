@@ -33,6 +33,7 @@ public class GamePanel extends JPanel {
 		timer = new Timer(5, null);
 		timer.start();
 		this.gameMap = new GameMapOne();
+		add(gameMap);
 	}
 
 	public void paint(Graphics g) {
@@ -40,15 +41,14 @@ public class GamePanel extends JPanel {
 		Graphics2D g2d = (Graphics2D) g;
 		RenderingHints rh = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g2d.setRenderingHints(rh);
+		AffineTransform reset = g2d.getTransform();
 
 		gameMap.paintComponent(g2d);
 		for (TankData data : gameState.getPlayers()) {
 			craft = new Tank(data);
 
-			AffineTransform reset = g2d.getTransform();
 			g2d.rotate(Math.toRadians(craft.getmR()), craft.getmX() + 10, craft.getmY() + 10);
 			g2d.drawImage(craft.getImage(), (int) craft.getmX(), (int) craft.getmY(), this);
-
 			g2d.setTransform(reset);
 
 			Toolkit.getDefaultToolkit().sync();

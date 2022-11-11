@@ -5,6 +5,11 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
+import java.awt.Graphics2D;
+import java.awt.geom.Rectangle2D.Double;
+import java.awt.geom.Rectangle2D;
+
+import SharedResources.GameMapOne;
 import SharedResources.GameState;
 import SharedResources.TankData;
 
@@ -17,6 +22,7 @@ public class ClientConnection implements Runnable {
     private ObjectOutputStream objOut;
     private TankData tank;
     private ServerModel serverModel;
+
 
     ClientConnection(Socket socket, ServerModel serverModel) throws IOException {
         this.socket = socket;
@@ -37,7 +43,7 @@ public class ClientConnection implements Runnable {
             // server -> client: gameState
             objOut.writeObject(serverModel.getGameState());
 
-            // server -> client: playerNumber 
+            // server -> client: playerNumber
             objOut.writeInt(tank.getPlayerNumber());
 
             // Handshake complete confirmation
@@ -55,11 +61,20 @@ public class ClientConnection implements Runnable {
 
     private synchronized GameState gameUpdate(GameState gameState) {
         for (TankData player : gameState.getPlayers()) {
-            moveTank(player);
-            checkCollision(player);
+            tankAction(player);
+            // checkCollision(player);
         }
-
         return gameState;
+    }
+
+    private void tankAction(TankData tank) {
+        if (moveValid(tank))
+            moveTank(tank);
+        else {
+            tank.setmDr(0);
+            tank.setmDx(0);
+            tank.setmDy(0);
+        }
     }
 
     private void moveTank(TankData tank) {
@@ -68,18 +83,19 @@ public class ClientConnection implements Runnable {
         tank.setmY(tank.getmY() + ((tank.getmDy()) * Math.sin(Math.toRadians(tank.getmR()))));
     }
 
-    private void checkCollision(TankData tank) {
-        if (tank.getmX() >= width - 30) {
-            tank.setmX(0);
-        } else if (tank.getmX() <= 0) {
-            tank.setmX(width - 30);
+    private boolean moveValid(TankData tank) {
+        TankData temp = tank;
+        moveTank(temp);
+        for (Rectangle2D wall : serverModel.getGameMap().getWalls()) {
+            if (temp.intersects(wall)) {
+                System.out.println("Intersection");
+                System.out.println(wall);
+                System.out.println(tank);
+                System.out.println(temp);
+                return false;
+            }
         }
-
-        if (tank.getmY() <= 0) {
-            tank.setmY(height - 110);
-        } else if (tank.getmY() > height - 110) {
-            tank.setmY(0);
-        }
+        return true;
     }
 
 }
