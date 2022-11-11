@@ -6,9 +6,9 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.concurrent.Executor;
 
-import SharedResources.GameMapOne;
 import SharedResources.GameState;
 import SharedResources.TankData;
+import SharedResources.GameMaps.GameMapOne;
 
 public class ServerModel {
     private ArrayList<ClientConnection> clientConnections;

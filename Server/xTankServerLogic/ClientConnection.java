@@ -5,11 +5,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-import java.awt.Graphics2D;
-import java.awt.geom.Rectangle2D.Double;
 import java.awt.geom.Rectangle2D;
 
-import SharedResources.GameMapOne;
 import SharedResources.GameState;
 import SharedResources.TankData;
 
@@ -86,13 +83,8 @@ public class ClientConnection implements Runnable {
         TankData temp = (TankData) tank.clone();
         moveTank(temp);
         for (Rectangle2D wall : serverModel.getGameMap().getWalls()) {
-            if (temp.intersects(wall)) {
-                System.out.println("Intersection");
-                System.out.println(wall);
-                System.out.println(tank);
-                System.out.println(temp);
+            if (temp.intersects(wall)) 
                 return false;
-            }
         }
         return true;
     }

@@ -6,7 +6,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 
-import SharedResources.GameMapOne;
 import SharedResources.GameState;
 import SharedResources.TankData;
 

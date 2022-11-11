@@ -6,7 +6,6 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import SharedResources.GameMapOne;
 import SharedResources.GameState;
 
 public class ClientFrame extends JFrame {

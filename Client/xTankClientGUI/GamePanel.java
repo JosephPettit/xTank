@@ -12,16 +12,17 @@ import java.awt.RenderingHints;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import SharedResources.GameMapOne;
 import SharedResources.GameState;
 import SharedResources.TankData;
+import SharedResources.GameMaps.GameMap;
+import SharedResources.GameMaps.GameMapOne;
 
 public class GamePanel extends JPanel {
 
 	private Timer timer;
 	private Tank craft;
 	private GameState gameState;
-	private GameMapOne gameMap;
+	private GameMap gameMap;
 
 	AffineTransform identity = new AffineTransform();
 
@@ -33,7 +34,6 @@ public class GamePanel extends JPanel {
 		timer = new Timer(5, null);
 		timer.start();
 		this.gameMap = new GameMapOne();
-		add(gameMap);
 	}
 
 	public void paint(Graphics g) {
