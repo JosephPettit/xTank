@@ -11,6 +11,9 @@ public class TankData implements Serializable {
     private double mY;
     private int mR;
     private int mDr;
+    private double missileX;
+    private double missileY;
+    private double missileR;
 
     private final String tankColor;
 
@@ -56,6 +59,32 @@ public class TankData implements Serializable {
                 mR = 180;
             }
         }
+    }
+
+    
+
+    public double getMissileX() {
+        return missileX;
+    }
+
+    public void setMissileX(double missileX) {
+        this.missileX = missileX;
+    }
+
+    public double getMissileY() {
+        return missileY;
+    }
+
+    public void setMissileY(double missileY) {
+        this.missileY = missileY;
+    }
+
+    public double getMissileR() {
+        return missileR;
+    }
+
+    public void setMissileR(double missileR) {
+        this.missileR = missileR;
     }
 
     public int getPlayerNumber() {

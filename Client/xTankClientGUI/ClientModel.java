@@ -19,6 +19,11 @@ public class ClientModel {
 		tank.setmY(tank.getmY() + ((tank.getmDy()) * Math.sin(Math.toRadians(tank.getmR()))));
 	}
 
+	public void moveMissile() {
+		tank.setMissileX(tank.getMissileX() + Math.cos(Math.toRadians(tank.getMissileR())));
+		tank.setMissileY(tank.getMissileY() + Math.sin(Math.toRadians(tank.getMissileR())));
+	}
+
 	public void checkCollision() {
 		if (tank.getmX() >= ClientFrame.GAME_WIDTH - 30) {
 			tank.setmX(0);

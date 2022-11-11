@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.awt.geom.AffineTransform;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -43,6 +44,9 @@ public class GamePanel extends JPanel {
 			Toolkit.getDefaultToolkit().sync();
 
 			g2d.setTransform(reset);
+			
+			g2d.drawImage(new ImageIcon(getClass().getResource("Assets/missile.png")).getImage(), (int) craft.getMissileX(), (int) craft.getMissileY(), this);
+			
 		}
 		g.dispose();
 	}

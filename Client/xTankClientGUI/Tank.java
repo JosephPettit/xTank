@@ -29,6 +29,30 @@ public class Tank {
 		return mImage;
 	}
 
+	public double getMissileX() {
+        return data.getMissileX();
+    }
+
+    public void setMissileX(double missileX) {
+        data.setMissileX(missileX);
+    }
+
+    public double getMissileY() {
+        return data.getMissileY();
+    }
+
+    public void setMissileY(double missileY) {
+        data.setMissileY(missileY);
+    }
+
+    public double getMissileR() {
+        return data.getMissileR();
+    }
+
+    public void setMissileR(double missileR) {
+        data.setMissileR(missileR);
+    }
+
 	public int getmR() {
 		return data.getmR();
 	}

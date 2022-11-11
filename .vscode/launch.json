@@ -6,6 +6,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Launch ClientMain",
+      "request": "launch",
+      "mainClass": "ClientMain",
+      "projectName": "xTank_a7f7d193"
+    },
+    {
+      "type": "java",
+      "name": "Launch ServerMain",
+      "request": "launch",
+      "mainClass": "ServerMain",
+      "projectName": "xTank_a7f7d193"
+    },
+    {
+      "type": "java",
       "name": "Launch ServerGUIMain",
       "request": "launch",
       "mainClass": "XTankServerGUI.ServerGUIMain",
