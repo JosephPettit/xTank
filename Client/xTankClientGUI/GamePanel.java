@@ -33,14 +33,16 @@ public class GamePanel extends JPanel {
 
 	public void paint(Graphics g) {
 		super.paint(g);
+		Graphics2D g2d = (Graphics2D) g;
 		for (TankData data : gameState.getPlayers()) {
 			craft = new Tank(data);
-			// if (craft != null) {
-			Graphics2D g2d = (Graphics2D) g;
+
+			AffineTransform reset = g2d.getTransform();
 			g2d.rotate(Math.toRadians(craft.getmR()), craft.getmX() + 10, craft.getmY() + 10);
 			g2d.drawImage(craft.getImage(), (int) craft.getmX(), (int) craft.getmY(), this);
 			Toolkit.getDefaultToolkit().sync();
-			// }
+
+			g2d.setTransform(reset);
 		}
 		g.dispose();
 	}
