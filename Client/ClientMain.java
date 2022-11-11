@@ -30,7 +30,6 @@ public class ClientMain {
 		}
 
 		try {
-
 			serverConnection.connectToServer(ip);
 		} catch (ClassNotFoundException | IOException e) {
 

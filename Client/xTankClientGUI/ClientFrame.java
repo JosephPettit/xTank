@@ -6,12 +6,13 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import SharedResources.GameMapOne;
 import SharedResources.GameState;
 
 public class ClientFrame extends JFrame {
 
-	static final int GAME_WIDTH = 1280;
-	static final int GAME_HEIGHT = 720;
+	public static final int GAME_WIDTH = 1280;
+	public static final int GAME_HEIGHT = 720;
 	private ClientCardPanel clientCardPanel;
 	private GamePanel gamePanel;
 

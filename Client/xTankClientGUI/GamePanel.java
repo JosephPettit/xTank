@@ -7,10 +7,12 @@ import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.awt.geom.AffineTransform;
+import java.awt.RenderingHints;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import SharedResources.GameMapOne;
 import SharedResources.GameState;
 import SharedResources.TankData;
 
@@ -19,6 +21,7 @@ public class GamePanel extends JPanel {
 	private Timer timer;
 	private Tank craft;
 	private GameState gameState;
+	private GameMapOne gameMap;
 
 	AffineTransform identity = new AffineTransform();
 
@@ -29,20 +32,26 @@ public class GamePanel extends JPanel {
 		setBackground(Color.BLACK);
 		timer = new Timer(5, null);
 		timer.start();
+		this.gameMap = new GameMapOne();
 	}
 
 	public void paint(Graphics g) {
 		super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
+		RenderingHints rh = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		g2d.setRenderingHints(rh);
+
+		gameMap.paintComponent(g2d);
 		for (TankData data : gameState.getPlayers()) {
 			craft = new Tank(data);
 
 			AffineTransform reset = g2d.getTransform();
 			g2d.rotate(Math.toRadians(craft.getmR()), craft.getmX() + 10, craft.getmY() + 10);
 			g2d.drawImage(craft.getImage(), (int) craft.getmX(), (int) craft.getmY(), this);
-			Toolkit.getDefaultToolkit().sync();
 
 			g2d.setTransform(reset);
+
+			Toolkit.getDefaultToolkit().sync();
 		}
 		g.dispose();
 	}
