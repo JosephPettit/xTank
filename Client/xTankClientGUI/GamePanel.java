@@ -16,6 +16,7 @@ import javax.swing.Timer;
 import GameMaps.*;
 import SharedResources.GameState;
 import SharedResources.Missile;
+import SharedResources.Player;
 import SharedResources.TankData;
 
 public class GamePanel extends JPanel {
@@ -23,6 +24,7 @@ public class GamePanel extends JPanel {
 	private Timer timer;
 	private GameState gameState;
 	private GameMap gameMap;
+	private HealthBar healthBar;
 
 	AffineTransform identity = new AffineTransform();
 
@@ -44,7 +46,9 @@ public class GamePanel extends JPanel {
 		g2d.setRenderingHints(rh);
 		AffineTransform reset = g2d.getTransform();
 
+		// healthBar.paintComponent(g2d);
 		gameMap.paintComponent(g2d);
+
 		for (TankData data : gameState.getPlayerTanks()) {
 
 			g2d.rotate(Math.toRadians(data.getmR()), data.getX() + 10, data.getY() + 10);
@@ -58,6 +62,11 @@ public class GamePanel extends JPanel {
 					g2d.drawImage(new ImageIcon(getClass().getResource("Assets/missile.png")).getImage(),
 							(int) missile.getX(), (int) missile.getY(), this);
 			}
+		}
+
+		for(Player player : gameState.getPlayers()){
+			HealthBar healthBar = new HealthBar(player.getPlayerNumber(), 0, GameMap.GAME_HEIGHT - 75);
+			healthBar.paintComponent(g2d);
 		}
 
 		Toolkit.getDefaultToolkit().sync();
