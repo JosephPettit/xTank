@@ -12,6 +12,8 @@ public class GameMapOne extends GameMap {
 
     public GameMapOne() {
         super(Color.gray);
+        // Rectangle 2D constructor
+        // starting x, starting y, rect width, rect height
         west = new Rectangle2D.Double(0, 0, 10, GAME_HEIGHT);
         east = new Rectangle2D.Double(GAME_WIDTH - 25, 0, 10, GAME_HEIGHT);
         north = new Rectangle2D.Double(0, 0, GAME_WIDTH, 10);

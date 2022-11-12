@@ -33,15 +33,8 @@ public class ClientFrame extends JFrame {
 		JOptionPane.showMessageDialog(this, message);
 	}
 
-	// public void cycleCard() {
-	// clientCardPanel.cycleCard();
-	// }
-
 	private void setupPanels() {
-		// clientCardPanel = new ClientCardPanel();
-		// add(clientCardPanel);
 		gamePanel = new GamePanel();
-		// clientCardPanel.addCard(gamePanel);
 		add(gamePanel);
 	}
 

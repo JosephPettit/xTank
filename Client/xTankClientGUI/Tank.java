@@ -9,6 +9,8 @@ public class Tank {
 	private TankData data;
 	private Image mImage;
 
+	// TODO: can maybe be deleted if gamePanel is updated to include tank images
+	// from TankData
 	public Tank(TankData data) {
 		ImageIcon ii = new ImageIcon(getClass().getResource(data.getTankColor()));
 		mImage = ii.getImage();
