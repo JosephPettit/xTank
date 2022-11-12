@@ -21,7 +21,6 @@ import SharedResources.TankData;
 public class GamePanel extends JPanel {
 
 	private Timer timer;
-	private Tank craft;
 	private GameState gameState;
 	private GameMap gameMap;
 
@@ -47,11 +46,11 @@ public class GamePanel extends JPanel {
 		AffineTransform reset = g2d.getTransform();
 
 		gameMap.paintComponent(g2d);
-		for (TankData data : gameState.getPlayers()) {
-			craft = new Tank(data);
+		for (TankData data : gameState.getPlayerTanks()) {
 
-			g2d.rotate(Math.toRadians(craft.getmR()), craft.getmX() + 10, craft.getmY() + 10);
-			g2d.drawImage(craft.getImage(), (int) craft.getmX(), (int) craft.getmY(), this);
+			g2d.rotate(Math.toRadians(data.getmR()), data.getX() + 10, data.getY() + 10);
+			g2d.drawImage(new ImageIcon(getClass().getResource(data.getTankColor())).getImage(), (int) data.getX(),
+					(int) data.getY(), this);
 
 			g2d.setTransform(reset);
 
@@ -60,23 +59,14 @@ public class GamePanel extends JPanel {
 					g2d.drawImage(new ImageIcon(getClass().getResource("Assets/missile.png")).getImage(),
 							(int) missile.getX(), (int) missile.getY(), this);
 			}
-
-			// TODO: Johnny - How did you do this magic with g2d.drawImage(new
-			// ImageIcon(getClass().getResource("Assets/missile.png")).getImage()
-			// if we can do the same thing on line 55 instead of craft.getImage, use your
-			// magic and have it use the string in data (TankData).
-			// we can delete the Tank class for simplicity and just use the methods in
-			// data(TankData).
-
-			// I promise I tried, and it's not working for me. <3 Joe
 		}
 
 		Toolkit.getDefaultToolkit().sync();
 		g.dispose();
 	}
 
-	// TODO: add game information in bottom 'panel', player, health etc. 
-	
+	// TODO: add game information in bottom 'panel', player, health etc.
+
 	void addInputActionListener(KeyListener listenForKey) {
 		this.addKeyListener(listenForKey);
 	}
