@@ -5,6 +5,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
+import GameMaps.GameMap;
+
 import java.awt.geom.Rectangle2D;
 
 import SharedResources.GameState;
@@ -56,16 +58,15 @@ public class ClientConnection implements Runnable {
         for (TankData player : gameState.getPlayers()) {
             tankAction(player);
             moveMissile(player);
-            // moveTank(player);
-            // checkCollision(player);
         }
         return gameState;
     }
 
     private void tankAction(TankData tank) {
-        if (moveValid(tank))
+        if (moveValid(tank)) {
             moveTank(tank);
-        else {
+            scoobyDooLogic(tank);
+        } else {
             tank.setmDr(0);
             tank.setmDx(0);
             tank.setmDy(0);
@@ -80,7 +81,7 @@ public class ClientConnection implements Runnable {
 
     private void moveMissile(TankData tank) {
         tank.setMissileX(tank.getMissileX() + (Math.cos(Math.toRadians(tank.getMissileR())) * 2));
-		tank.setMissileY(tank.getMissileY() + (Math.sin(Math.toRadians(tank.getMissileR())) * 2));
+        tank.setMissileY(tank.getMissileY() + (Math.sin(Math.toRadians(tank.getMissileR())) * 2));
     }
 
     private boolean moveValid(TankData tank) {
@@ -91,6 +92,22 @@ public class ClientConnection implements Runnable {
                 return false;
         }
         return true;
+    }
+
+    // TODO: Check bounds of scooby logic
+    private void scoobyDooLogic(TankData tank) {
+        if (tank.getX() >= GameMap.GAME_WIDTH - 30) {
+            tank.setmX(0);
+        } else if (tank.getX() <= 0) {
+            tank.setmX(GameMap.GAME_WIDTH - 30);
+        }
+
+        if (tank.getY() <= 0) {
+            tank.setmY(500);
+        } else if (tank.getY() > 500) {
+            tank.setmY(0);
+        }
+
     }
 
 }

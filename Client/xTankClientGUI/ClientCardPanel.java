@@ -25,7 +25,7 @@ public class ClientCardPanel extends JPanel {
 		
 		JPanel panel = new JPanel();
 		add(panel, BorderLayout.NORTH);
-		
+		// TODO: Remove or add panel somewhere
 		JLabel lblNewLabel = new JLabel("Game info here?");
 		panel.add(lblNewLabel);
 		

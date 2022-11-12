@@ -62,8 +62,6 @@ public class TankData extends Rectangle {
         }
     }
 
-    
-
     public double getMissileX() {
         return missileX;
     }

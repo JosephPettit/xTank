@@ -29,6 +29,7 @@ public class Tank {
 		return mImage;
 	}
 
+	// TODO: Move to Missile object / list of missiles
 	public double getMissileX() {
         return data.getMissileX();
     }

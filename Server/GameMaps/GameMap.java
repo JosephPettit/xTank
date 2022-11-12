@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import javax.swing.JComponent;
 
 public abstract class GameMap extends JComponent {
-    static final int GAME_WIDTH = 1280;
-    static final int GAME_HEIGHT = 720;
+    public static final int GAME_WIDTH = 1280;
+    public static final int GAME_HEIGHT = 720;
 
     private Color color;
     protected ArrayList<Rectangle2D> walls;

@@ -19,7 +19,6 @@ public class ClientMain {
 		connectToServer();
 		clientFrame = new ClientFrame();
 		new ClientController(clientFrame, serverConnection);
-		//System.out.println("Main - " + Thread.currentThread().getName());
 	}
 
 	private static void connectToServer() {
