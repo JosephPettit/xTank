@@ -9,6 +9,7 @@ import java.io.IOException;
 
 import javax.swing.ImageIcon;
 
+import GameMaps.GameMap;
 import SharedResources.GameState;
 import SharedResources.TankData;
 
@@ -19,6 +20,7 @@ public class ClientController {
   private TankData tank;
   private GameState gameState;
   private final int playerNumber;
+  private GameMap gameMap;
 
   public ClientController(ClientFrame clientFrame, ServerConnection serverConnection) {
     this.clientFrame = clientFrame;
@@ -26,9 +28,10 @@ public class ClientController {
     this.clientFrame.setIconImage(assignIcon(serverConnection.getColor()));
     this.clientFrame.setVisible(true);
     this.gameState = serverConnection.getInitialGameState();
+    this.gameMap = serverConnection.getGameMap();
     this.playerNumber = serverConnection.getPlayerNumber();
     this.tank = getGSTank();
-    addGameState();
+    addGameStartInfo();
     setupListeners();
   }
 
@@ -36,7 +39,8 @@ public class ClientController {
     return gameState.getPlayerTanks().get(playerNumber);
   }
 
-  private void addGameState() {
+  private void addGameStartInfo() {
+    clientFrame.addGameMap(gameMap);
     clientFrame.addGameState(gameState);
   }
 
@@ -89,7 +93,7 @@ public class ClientController {
             try {
               gameState = serverConnection.updateGameState(gameState);
               tank = gameState.getPlayerTanks().get(playerNumber);
-              addGameState();
+              addGameStartInfo();
               clientFrame.repaint();
             } catch (IOException | ClassNotFoundException e1) {
               clientFrame.displayErrorMessage(e1.toString());

@@ -36,6 +36,9 @@ public class ClientConnection implements Runnable {
             // server -> client: color list; server <- client: color selection
             tank = serverModel.startingTank(serverModel.clientTankSelection(objIn, objOut));
 
+            // server -> client: gameMap
+            objOut.writeObject(serverModel.getGameMap());
+
             // server -> client: gameState
             objOut.writeObject(serverModel.getGameState());
 

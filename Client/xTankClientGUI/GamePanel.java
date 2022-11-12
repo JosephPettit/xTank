@@ -34,7 +34,6 @@ public class GamePanel extends JPanel {
 		timer = new Timer(5, null);
 		timer.setInitialDelay(10);
 		timer.start();
-		this.gameMap = new GameMapTwo();
 	}
 
 	public void paint(Graphics g) {
@@ -77,6 +76,10 @@ public class GamePanel extends JPanel {
 
 	public void addGameTimerListener(ActionListener actionListener) {
 		timer.addActionListener(actionListener);
+	}
+
+	public void addGameMap(GameMap gameMap) {
+		this.gameMap = gameMap;
 	}
 
 }
