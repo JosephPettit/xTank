@@ -17,12 +17,14 @@ import GameMaps.*;
 import SharedResources.GameState;
 import SharedResources.Missile;
 import SharedResources.TankData;
+import xTankClientGUI.HealthBar;
 
 public class GamePanel extends JPanel {
 
 	private Timer timer;
 	private GameState gameState;
 	private GameMap gameMap;
+	//private HealthBar healthBar;
 
 	AffineTransform identity = new AffineTransform();
 
@@ -35,6 +37,7 @@ public class GamePanel extends JPanel {
 		timer.setInitialDelay(10);
 		timer.start();
 		this.gameMap = new GameMapTwo();
+		//healthBar = new HealthBar(Color.RED);
 	}
 
 	public void paint(Graphics g) {
@@ -58,6 +61,10 @@ public class GamePanel extends JPanel {
 				if (!missile.isExploded())
 					g2d.drawImage(new ImageIcon(getClass().getResource("Assets/missile.png")).getImage(),
 							(int) missile.getX(), (int) missile.getY(), this);
+					missile.setDistance(missile.getDistance()+1);
+					if(missile.getDistance() > missile.getMAX_DISTANCE()) {
+						missile.setExploded(true);
+					}	
 			}
 		}
 

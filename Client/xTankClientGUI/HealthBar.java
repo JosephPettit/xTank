@@ -19,6 +19,10 @@ public abstract class HealthBar extends JComponent {
     HealthBar(Color color) {
         healthBars = new ArrayList<Rectangle2D>();
         this.color = color;
+
+        // Add Bars Here
+        Rectangle2D p1Bar = new Rectangle2D.Double(0,100,20,20);
+        healthBars.add(p1Bar);
     }
 
     @Override
@@ -36,7 +40,7 @@ public abstract class HealthBar extends JComponent {
         }
     }
 
-    public synchronized ArrayList<Rectangle2D> getWalls() {
+    public synchronized ArrayList<Rectangle2D> getHealthBars() {
         return healthBars;
     }
 }

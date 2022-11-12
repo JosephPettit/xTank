@@ -8,6 +8,8 @@ public class Missile extends Rectangle {
     private double x, y;
     private int r;
     private boolean exploded;
+    private int distance;
+    private final int MAX_DISTANCE = 500;
 
     public Missile(TankData parent) {
         this.playerNumber = parent.getPlayerNumber();
@@ -16,6 +18,21 @@ public class Missile extends Rectangle {
         this.r = parent.getmR();
         setSize(20, 20);
         exploded = false;
+        this.distance = 0;
+    }
+
+    
+
+    public void setExploded(boolean exploded) {
+        this.exploded = exploded;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
+    public void setDistance(int distance) {
+        this.distance = distance;
     }
 
     public void explode() {
@@ -52,5 +69,9 @@ public class Missile extends Rectangle {
 
     public void setR(int r) {
         this.r = r;
+    }
+
+    public int getMAX_DISTANCE() {
+        return MAX_DISTANCE;
     }
 }
