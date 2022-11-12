@@ -57,7 +57,7 @@ public class ClientConnection implements Runnable {
 
     private synchronized GameState gameUpdate(GameState gameState) {
 
-        for (TankData player : gameState.getPlayers()) {
+        for (TankData player : gameState.getPlayerTanks()) {
             tankAction(player);
             moveMissile(player);
         }
@@ -82,7 +82,6 @@ public class ClientConnection implements Runnable {
             for (Rectangle2D wall : serverModel.getGameMap().getWalls()) {
                 if (!missile.isExploded() && missile.intersects(wall)) {
                     missile.explode();
-                    break;
                 }
             }
         }
@@ -91,14 +90,12 @@ public class ClientConnection implements Runnable {
 
     private void missileTankCollision(TankData tank) {
         for (Missile missile : serverModel.getGameState().getAllMissiles()) {
-            for (TankData player : serverModel.getGameState().getPlayers()) {
+            for (TankData player : serverModel.getGameState().getPlayerTanks()) {
                 if (player.getPlayerNumber() != missile.getPlayerNumber()) {
                     Rectangle2D playerTank = player;
                     if (!missile.isExploded() && missile.intersects(playerTank)) {
-                        System.out.printf("Player %d, hit player %d \n", missile.getPlayerNumber(),
-                                player.getPlayerNumber());
+                        serverModel.getGameState().playerHit(player.getPlayerNumber());
                         missile.explode();
-                        break;
                     }
                 }
             }
@@ -128,7 +125,7 @@ public class ClientConnection implements Runnable {
         return true;
     }
 
-    // TODO: scooby doo logic broken now that panels are removed. 
+    // TODO: scooby doo logic broken now that panels are removed.
     private void scoobyDooLogic(TankData tank) {
         if (tank.getX() >= GameMap.GAME_WIDTH - 30) {
             tank.setmX(0);

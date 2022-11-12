@@ -33,7 +33,7 @@ public class ClientController {
   }
 
   private TankData getGSTank() {
-    return gameState.getPlayers().get(playerNumber);
+    return gameState.getPlayerTanks().get(playerNumber);
   }
 
   private void addGameState() {
@@ -87,7 +87,7 @@ public class ClientController {
           public void actionPerformed(ActionEvent e) {
             try {
               gameState = serverConnection.updateGameState(gameState);
-              tank = gameState.getPlayers().get(playerNumber);
+              tank = gameState.getPlayerTanks().get(playerNumber);
               addGameState();
             } catch (IOException | ClassNotFoundException e1) {
               // TODO: bubble up to be handled

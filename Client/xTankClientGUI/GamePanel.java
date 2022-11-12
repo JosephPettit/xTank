@@ -21,7 +21,6 @@ import SharedResources.TankData;
 public class GamePanel extends JPanel {
 
 	private Timer timer;
-	private Tank craft;
 	private GameState gameState;
 	private GameMap gameMap;
 
@@ -47,11 +46,11 @@ public class GamePanel extends JPanel {
 		AffineTransform reset = g2d.getTransform();
 
 		gameMap.paintComponent(g2d);
-		for (TankData data : gameState.getPlayers()) {
-			craft = new Tank(data);
+		for (TankData data : gameState.getPlayerTanks()) {
 
-			g2d.rotate(Math.toRadians(craft.getmR()), craft.getmX() + 10, craft.getmY() + 10);
-			g2d.drawImage(craft.getImage(), (int) craft.getmX(), (int) craft.getmY(), this);
+			g2d.rotate(Math.toRadians(data.getmR()), data.getX() + 10, data.getY() + 10);
+			g2d.drawImage(new ImageIcon(getClass().getResource(data.getTankColor())).getImage(), (int) data.getX(),
+					(int) data.getY(), this);
 
 			g2d.setTransform(reset);
 
@@ -66,8 +65,8 @@ public class GamePanel extends JPanel {
 		g.dispose();
 	}
 
-	// TODO: add game information in bottom 'panel', player, health etc. 
-	
+	// TODO: add game information in bottom 'panel', player, health etc.
+
 	void addInputActionListener(KeyListener listenForKey) {
 		this.addKeyListener(listenForKey);
 	}

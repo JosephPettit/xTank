@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
+
 import javax.swing.JComponent;
 
 public abstract class GameMap extends JComponent {
