@@ -58,8 +58,8 @@ public class GamePanel extends JPanel {
 
 			g2d.setTransform(reset);
 
-			for (Missile missile : data.getMissiles()) {
-				// if (missile.isValid())
+			for (Missile missile : gameState.getAllMissiles()) {
+				if (!missile.isExploded())
 					g2d.drawImage(new ImageIcon(getClass().getResource("Assets/missile.png")).getImage(),
 							(int) missile.getX(), (int) missile.getY(), this);
 			}

@@ -25,7 +25,6 @@ public class TankData extends Rectangle {
         this.missiles = new ArrayList<>();
         setSize(20, 20);
         assignStartingLocation();
-
     }
 
     private String assignColor(String tankColor) {
@@ -46,6 +45,7 @@ public class TankData extends Rectangle {
         };
     }
 
+    // TODO: add starting locations for player 3 & 4
     private void assignStartingLocation() {
         switch (playerNumber) {
             case 0 -> {
@@ -62,7 +62,21 @@ public class TankData extends Rectangle {
     }
 
     public void fire() {
+        if (missiles.size() >= 5) {
+            for (Missile missile : missiles) {
+                if (missile.isExploded())
+                    missiles.remove(missile);
+            }
+            if (missiles.size() >= 5)
+                missiles.remove(0);
+        }
+
         missiles.add(new Missile(this));
+
+    }
+
+    public synchronized ArrayList<Missile> getMissiles() {
+        return missiles;
     }
 
     public int getPlayerNumber() {
@@ -119,10 +133,6 @@ public class TankData extends Rectangle {
 
     public void setmDr(int mDr) {
         this.mDr = mDr;
-    }
-
-    public ArrayList<Missile> getMissiles() {
-        return missiles;
     }
 
     @Override

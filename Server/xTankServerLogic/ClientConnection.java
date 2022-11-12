@@ -56,6 +56,7 @@ public class ClientConnection implements Runnable {
     }
 
     private synchronized GameState gameUpdate(GameState gameState) {
+
         for (TankData player : gameState.getPlayers()) {
             tankAction(player);
             moveMissile(player);
@@ -72,25 +73,36 @@ public class ClientConnection implements Runnable {
             tank.setmDx(0);
             tank.setmDy(0);
         }
+        missileTankCollision(tank);
+        missileWallCollision(tank);
+    }
 
-        if (missileCollision(tank)) {
-            System.out.println("Hit");
-
+    private void missileWallCollision(TankData tank) {
+        for (Missile missile : tank.getMissiles()) {
+            for (Rectangle2D wall : serverModel.getGameMap().getWalls()) {
+                if (!missile.isExploded() && missile.intersects(wall)) {
+                    missile.explode();
+                    break;
+                }
+            }
         }
 
     }
 
-    private boolean missileCollision(TankData tank) {
-        for (Missile missile : tank.getMissiles()) {
-            for (Rectangle2D wall : serverModel.getGameMap().getWalls()) {
-                if (missile.intersects(wall)) {
-                    System.out.println("Wall");
-                    tank.getMissiles().remove(missile);
-                    return true;
+    private void missileTankCollision(TankData tank) {
+        for (Missile missile : serverModel.getGameState().getAllMissiles()) {
+            for (TankData player : serverModel.getGameState().getPlayers()) {
+                if (player.getPlayerNumber() != missile.getPlayerNumber()) {
+                    Rectangle2D playerTank = player;
+                    if (!missile.isExploded() && missile.intersects(playerTank)) {
+                        System.out.printf("Player %d, hit player %d \n", missile.getPlayerNumber(),
+                                player.getPlayerNumber());
+                        missile.explode();
+                        break;
+                    }
                 }
             }
         }
-        return false;
     }
 
     private void moveTank(TankData tank) {

@@ -20,6 +20,14 @@ public class GameState implements Serializable {
         return players;
     }
 
+    public synchronized ArrayList<Missile> getAllMissiles() {
+        ArrayList<Missile> rtnList = new ArrayList<>();
+        for (TankData player : players) {
+            rtnList.addAll(player.getMissiles());
+        }
+        return rtnList;
+    }
+
     @Override
     public String toString() {
         return "GameState [\nplayers=" + players + "\n]";
