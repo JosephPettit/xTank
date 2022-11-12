@@ -74,10 +74,10 @@ public class ClientController {
               tank.setMissileR(tank.getmR());
               tank.setMissileX(tank.getmX());
               tank.setMissileY(tank.getmY());
-              System.out.println("shoot");
+              //System.out.println("shoot");
             }
 
-            System.out.println("Key pressed " + gameState);
+            //System.out.println("Key pressed " + gameState);
           }
         });
   }
