@@ -81,6 +81,7 @@ public class ClientController {
   }
 
   private void addGameTimerListener() {
+
     clientFrame.addGamePanelTimerListener(
         new ActionListener() {
           @Override
@@ -89,12 +90,12 @@ public class ClientController {
               gameState = serverConnection.updateGameState(gameState);
               tank = gameState.getPlayerTanks().get(playerNumber);
               addGameState();
+              clientFrame.repaint();
             } catch (IOException | ClassNotFoundException e1) {
-              // TODO: bubble up to be handled
               clientFrame.displayErrorMessage(e1.toString());
-              e1.printStackTrace();
+              clientFrame.displayErrorMessage("This error is irrecoverable \nGame will now close");
+              System.exit(-1);
             }
-            clientFrame.repaint();
           }
         });
   }
