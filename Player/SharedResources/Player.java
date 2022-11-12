@@ -2,7 +2,7 @@ package SharedResources;
 
 import java.io.Serializable;
 
-public class Player implements Serializable{
+public class Player implements Serializable {
     private int health;
     private final int playerNumber;
     private long lastHit;
@@ -15,7 +15,7 @@ public class Player implements Serializable{
 
     public void playerHit() {
         current = System.currentTimeMillis();
-        if (current >= lastHit + 20) {
+        if (current >= lastHit + 500) {
             lastHit = current;
             health--;
             System.out.println("I've been hit!");
