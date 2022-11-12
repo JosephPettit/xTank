@@ -13,7 +13,6 @@ public class ClientFrame extends JFrame {
 
 	public static final int GAME_WIDTH = 1280;
 	public static final int GAME_HEIGHT = 720;
-	// private ClientCardPanel clientCardPanel;
 	private GamePanel gamePanel;
 
 	/**
@@ -26,8 +25,6 @@ public class ClientFrame extends JFrame {
 		setLocationRelativeTo(null);
 		setTitle("X-Tank Client");
 		setResizable(false);
-		// this.setIconImage(new
-		// ImageIcon(getClass().getResource("Assets/redTank.png")).getImage());
 		setupPanels();
 		setContentPane(gamePanel);
 	}

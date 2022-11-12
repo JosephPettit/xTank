@@ -54,8 +54,6 @@ public class GamePanel extends JPanel {
 			g2d.rotate(Math.toRadians(craft.getmR()), craft.getmX() + 10, craft.getmY() + 10);
 			g2d.drawImage(craft.getImage(), (int) craft.getmX(), (int) craft.getmY(), this);
 
-			Toolkit.getDefaultToolkit().sync();
-
 			g2d.setTransform(reset);
 
 			for (Missile missile : gameState.getAllMissiles()) {
@@ -66,15 +64,20 @@ public class GamePanel extends JPanel {
 
 			// TODO: Johnny - How did you do this magic with g2d.drawImage(new
 			// ImageIcon(getClass().getResource("Assets/missile.png")).getImage()
-			// if we can do the same thing on line 55 instead of craft.drawImage, use your
+			// if we can do the same thing on line 55 instead of craft.getImage, use your
 			// magic and have it use the string in data (TankData).
 			// we can delete the Tank class for simplicity and just use the methods in
-			// data(TankData). <3 Joe
+			// data(TankData).
+
+			// I promise I tried, and it's not working for me. <3 Joe
 		}
 
+		Toolkit.getDefaultToolkit().sync();
 		g.dispose();
 	}
 
+	// TODO: add game information in bottom 'panel', player, health etc. 
+	
 	void addInputActionListener(KeyListener listenForKey) {
 		this.addKeyListener(listenForKey);
 	}

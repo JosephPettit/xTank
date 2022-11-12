@@ -14,7 +14,6 @@ public class ClientMain {
 	private static ServerConnection serverConnection;
 
 	public static void main(String[] args) {
-
 		serverConnection = new ServerConnection();
 		connectToServer();
 		clientFrame = new ClientFrame();
