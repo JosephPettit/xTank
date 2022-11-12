@@ -55,6 +55,9 @@ public class ClientConnection implements Runnable {
     private synchronized GameState gameUpdate(GameState gameState) {
         for (TankData player : gameState.getPlayers()) {
             tankAction(player);
+            moveMissile(player);
+            // moveTank(player);
+            // checkCollision(player);
         }
         return gameState;
     }
@@ -73,6 +76,11 @@ public class ClientConnection implements Runnable {
         tank.setmR((tank.getmR() + (tank.getmDy() < 0 ? -1 * tank.getmDr() : tank.getmDr())) % 360);
         tank.setmX(tank.getX() + ((tank.getmDy()) * Math.cos(Math.toRadians(tank.getmR()))));
         tank.setmY(tank.getY() + ((tank.getmDy()) * Math.sin(Math.toRadians(tank.getmR()))));
+    }
+
+    private void moveMissile(TankData tank) {
+        tank.setMissileX(tank.getMissileX() + (Math.cos(Math.toRadians(tank.getMissileR())) * 2));
+		tank.setMissileY(tank.getMissileY() + (Math.sin(Math.toRadians(tank.getMissileR())) * 2));
     }
 
     private boolean moveValid(TankData tank) {

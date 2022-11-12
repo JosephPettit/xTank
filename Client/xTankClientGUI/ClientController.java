@@ -70,6 +70,14 @@ public class ClientController {
             if (key == KeyEvent.VK_RIGHT) {
               tank.setmDr(1);
             }
+            if(key == KeyEvent.VK_SPACE) {
+              tank.setMissileR(tank.getmR());
+              tank.setMissileX(tank.getmX());
+              tank.setMissileY(tank.getmY());
+              //System.out.println("shoot");
+            }
+
+            //System.out.println("Key pressed " + gameState);
           }
         });
   }

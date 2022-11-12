@@ -12,6 +12,9 @@ public class TankData extends Rectangle implements Serializable {
     private double mY;
     private int mR;
     private int mDr;
+    private double missileX;
+    private double missileY;
+    private double missileR;
 
     private final String tankColor;
 
@@ -20,7 +23,8 @@ public class TankData extends Rectangle implements Serializable {
     public TankData(String tankColor, int playerNumber) {
         this.tankColor = assignColor(tankColor);
         this.playerNumber = playerNumber;
-        setSize(20, 20);
+        missileX = -1000;
+        missileY = -1000;        setSize(20, 20);
         assignStartingLocation();
 
     }
@@ -56,6 +60,32 @@ public class TankData extends Rectangle implements Serializable {
                 mR = 180;
             }
         }
+    }
+
+    
+
+    public double getMissileX() {
+        return missileX;
+    }
+
+    public void setMissileX(double missileX) {
+        this.missileX = missileX;
+    }
+
+    public double getMissileY() {
+        return missileY;
+    }
+
+    public void setMissileY(double missileY) {
+        this.missileY = missileY;
+    }
+
+    public double getMissileR() {
+        return missileR;
+    }
+
+    public void setMissileR(double missileR) {
+        this.missileR = missileR;
     }
 
     public int getPlayerNumber() {
