@@ -5,30 +5,34 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.Executor;
 
+import javax.swing.JOptionPane;
+
 public class Server implements Runnable {
 
   private ServerModel serverModel;
+  private Integer[] availPlayers;
 
   public Server(Executor pool) {
     serverModel = new ServerModel(pool);
+    availPlayers = new Integer[] { 2, 3, 4 };
   }
 
   @Override
   public void run() {
-    try (var listener = new ServerSocket(58901)) {
-      // TODO: make variable for multiple players 
-      System.out.println("Waiting for client1");
-      Socket socket = listener.accept();
-      System.out.println("connected to " + socket.getInetAddress().getHostAddress());
-      ClientConnection clientConnection1 = new ClientConnection(socket, serverModel);
+    Integer numPlayers = (Integer) JOptionPane.showInputDialog(null,
+        "Server Starting \nEnter total number of players:",
+        "xTank Total Players",
+        JOptionPane.QUESTION_MESSAGE, null, availPlayers, availPlayers[0]);
 
-      System.out.println("Waiting for client2");
-      socket = listener.accept();
-      System.out.println("connected to " + socket.getInetAddress().getHostAddress());
-      ClientConnection clientConnection2 = new ClientConnection(socket, serverModel);
-      System.out.println("Adding clients to server");
-      serverModel.addConnection(clientConnection1);
-      serverModel.addConnection(clientConnection2);
+    try (var listener = new ServerSocket(58901)) {
+
+      Socket socket = new Socket();
+      for (int i = 0; i < numPlayers; i++) {
+        System.out.printf("Waiting for player %d to join...\n\n", i + 1);
+        socket = listener.accept();
+        System.out.printf("Connected to %s \n", socket.getInetAddress().getHostAddress());
+        serverModel.addConnection(new ClientConnection(socket, serverModel));
+      }
 
       System.out.println("Starting Server");
       serverModel.startConnections();
