@@ -10,6 +10,7 @@ import GameMaps.GameMap;
 import java.awt.geom.Rectangle2D;
 
 import SharedResources.GameState;
+import SharedResources.Missile;
 import SharedResources.TankData;
 
 public class ClientConnection implements Runnable {
@@ -71,6 +72,25 @@ public class ClientConnection implements Runnable {
             tank.setmDx(0);
             tank.setmDy(0);
         }
+
+        if (missileCollision(tank)) {
+            System.out.println("Hit");
+
+        }
+
+    }
+
+    private boolean missileCollision(TankData tank) {
+        for (Missile missile : tank.getMissiles()) {
+            for (Rectangle2D wall : serverModel.getGameMap().getWalls()) {
+                if (missile.intersects(wall)) {
+                    System.out.println("Wall");
+                    tank.getMissiles().remove(missile);
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     private void moveTank(TankData tank) {
@@ -80,8 +100,10 @@ public class ClientConnection implements Runnable {
     }
 
     private void moveMissile(TankData tank) {
-        tank.setMissileX(tank.getMissileX() + (Math.cos(Math.toRadians(tank.getMissileR())) * 2));
-        tank.setMissileY(tank.getMissileY() + (Math.sin(Math.toRadians(tank.getMissileR())) * 2));
+        for (Missile missile : tank.getMissiles()) {
+            missile.setX(missile.getX() + (Math.cos(Math.toRadians(missile.getR())) * 2));
+            missile.setY(missile.getY() + (Math.sin(Math.toRadians(missile.getR())) * 2));
+        }
     }
 
     private boolean moveValid(TankData tank) {

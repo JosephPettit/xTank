@@ -16,6 +16,7 @@ import javax.swing.Timer;
 import GameMaps.GameMap;
 import GameMaps.GameMapOne;
 import SharedResources.GameState;
+import SharedResources.Missile;
 import SharedResources.TankData;
 
 public class GamePanel extends JPanel {
@@ -57,33 +58,18 @@ public class GamePanel extends JPanel {
 
 			g2d.setTransform(reset);
 
-			g2d.drawImage(new ImageIcon(getClass().getResource("Assets/missile.png")).getImage(),
-					(int) craft.getMissileX(), (int) craft.getMissileY(), this);
-
-		}
-
-		// TODO: add to missile object. 
-		// Coordinate Variables
-		int p1xpos = ((int) gameState.getPlayers().get(0).getX());
-		int p1ypos = ((int) gameState.getPlayers().get(0).getY());
-		int p1missilexpos = ((int) gameState.getPlayers().get(0).getMissileX());
-		int p1missileypos = ((int) gameState.getPlayers().get(0).getMissileY());
-
-		int p2xpos = ((int) gameState.getPlayers().get(1).getX());
-		int p2ypos = ((int) gameState.getPlayers().get(1).getY());
-		int p2missilexpos = ((int) gameState.getPlayers().get(1).getMissileX());
-		int p2missileypos = ((int) gameState.getPlayers().get(1).getMissileY());
-
-		// Check missile hits
-		if (p1missilexpos > (p2xpos - 10) && p1missilexpos < (p2xpos + 10)) {
-			if (p1missileypos > (p2ypos - 10) && p1missileypos < (p2ypos + 10)) {
-				System.out.print("p1 hit p2");
+			for (Missile missile : data.getMissiles()) {
+				// if (missile.isValid())
+					g2d.drawImage(new ImageIcon(getClass().getResource("Assets/missile.png")).getImage(),
+							(int) missile.getX(), (int) missile.getY(), this);
 			}
-		}
-		if (p2missilexpos > (p1xpos - 10) && p2missilexpos < (p1xpos + 10)) {
-			if (p2missileypos > (p1ypos - 10) && p2missileypos < (p1ypos + 10)) {
-				System.out.print("p2 hit p1");
-			}
+
+			// TODO: Johnny - How did you do this magic with g2d.drawImage(new
+			// ImageIcon(getClass().getResource("Assets/missile.png")).getImage()
+			// if we can do the same thing on line 55 instead of craft.drawImage, use your
+			// magic and have it use the string in data (TankData).
+			// we can delete the Tank class for simplicity and just use the methods in
+			// data(TankData). <3 Joe
 		}
 
 		g.dispose();

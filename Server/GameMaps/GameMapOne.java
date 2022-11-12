@@ -17,8 +17,8 @@ public class GameMapOne extends GameMap {
         north = new Rectangle2D.Double(0, 0, GAME_WIDTH, 10);
         south = new Rectangle2D.Double(0, GAME_HEIGHT - 100, GAME_WIDTH, 10);
 
-        // walls.add(west);
-        // walls.add(east);
+        walls.add(west);
+        walls.add(east);
         walls.add(north);
         walls.add(south);
     }

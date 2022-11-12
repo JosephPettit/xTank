@@ -1,6 +1,7 @@
 package SharedResources;
 
 import java.awt.Rectangle;
+import java.util.ArrayList;
 
 public class TankData extends Rectangle {
     private static final long serialVersionUID = 1L;
@@ -11,19 +12,17 @@ public class TankData extends Rectangle {
     private double mY;
     private int mR;
     private int mDr;
-    private double missileX;
-    private double missileY;
-    private double missileR;
 
     private final String tankColor;
 
     private final int playerNumber;
 
+    private ArrayList<Missile> missiles;
+
     public TankData(String tankColor, int playerNumber) {
         this.tankColor = assignColor(tankColor);
         this.playerNumber = playerNumber;
-        missileX = -1000;
-        missileY = -1000;        
+        this.missiles = new ArrayList<>();
         setSize(20, 20);
         assignStartingLocation();
 
@@ -62,28 +61,8 @@ public class TankData extends Rectangle {
         }
     }
 
-    public double getMissileX() {
-        return missileX;
-    }
-
-    public void setMissileX(double missileX) {
-        this.missileX = missileX;
-    }
-
-    public double getMissileY() {
-        return missileY;
-    }
-
-    public void setMissileY(double missileY) {
-        this.missileY = missileY;
-    }
-
-    public double getMissileR() {
-        return missileR;
-    }
-
-    public void setMissileR(double missileR) {
-        this.missileR = missileR;
+    public void fire() {
+        missiles.add(new Missile(this));
     }
 
     public int getPlayerNumber() {
@@ -140,6 +119,10 @@ public class TankData extends Rectangle {
 
     public void setmDr(int mDr) {
         this.mDr = mDr;
+    }
+
+    public ArrayList<Missile> getMissiles() {
+        return missiles;
     }
 
     @Override

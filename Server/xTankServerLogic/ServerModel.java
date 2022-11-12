@@ -17,7 +17,7 @@ public class ServerModel {
     private ArrayList<String> tankColors;
     private int numPlayers;
     private GameState gameState;
-    private GameMapOne gameMap;
+    private GameMap gameMap;
 
     public ServerModel(Executor pool) {
         this.pool = pool;
@@ -70,7 +70,7 @@ public class ServerModel {
         this.gameState = gameState;
     }
 
-    public synchronized GameMapOne getGameMap() {
+    public synchronized GameMap getGameMap() {
         return gameMap;
     }
 }

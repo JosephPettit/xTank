@@ -71,9 +71,7 @@ public class ClientController {
               tank.setmDr(1);
             }
             if(key == KeyEvent.VK_SPACE) {
-              tank.setMissileR(tank.getmR());
-              tank.setMissileX(tank.getX());
-              tank.setMissileY(tank.getY());
+              tank.fire();
             }
           }
         });
