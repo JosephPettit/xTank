@@ -11,9 +11,6 @@ import SharedResources.GameState;
 import SharedResources.TankData;
 
 public class ClientConnection implements Runnable {
-    private int width = 1200;
-    private int height = 720;
-
     private Socket socket;
     private ObjectInputStream objIn;
     private ObjectOutputStream objOut;
@@ -58,7 +55,6 @@ public class ClientConnection implements Runnable {
     private synchronized GameState gameUpdate(GameState gameState) {
         for (TankData player : gameState.getPlayers()) {
             tankAction(player);
-            // checkCollision(player);
         }
         return gameState;
     }
@@ -83,7 +79,7 @@ public class ClientConnection implements Runnable {
         TankData temp = (TankData) tank.clone();
         moveTank(temp);
         for (Rectangle2D wall : serverModel.getGameMap().getWalls()) {
-            if (temp.intersects(wall)) 
+            if (temp.intersects(wall))
                 return false;
         }
         return true;
