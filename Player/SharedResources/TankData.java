@@ -22,7 +22,8 @@ public class TankData implements Serializable {
     public TankData(String tankColor, int playerNumber) {
         this.tankColor = assignColor(tankColor);
         this.playerNumber = playerNumber;
-
+        missileX = -1000;
+        missileY = -1000;
         // assignColor();
         assignStartingLocation();
 
