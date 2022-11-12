@@ -23,7 +23,6 @@ public class ClientConnection implements Runnable {
     private TankData tank;
     private ServerModel serverModel;
 
-
     ClientConnection(Socket socket, ServerModel serverModel) throws IOException {
         this.socket = socket;
         this.serverModel = serverModel;
@@ -79,12 +78,12 @@ public class ClientConnection implements Runnable {
 
     private void moveTank(TankData tank) {
         tank.setmR((tank.getmR() + (tank.getmDy() < 0 ? -1 * tank.getmDr() : tank.getmDr())) % 360);
-        tank.setmX(tank.getmX() + ((tank.getmDy()) * Math.cos(Math.toRadians(tank.getmR()))));
-        tank.setmY(tank.getmY() + ((tank.getmDy()) * Math.sin(Math.toRadians(tank.getmR()))));
+        tank.setmX(tank.getX() + ((tank.getmDy()) * Math.cos(Math.toRadians(tank.getmR()))));
+        tank.setmY(tank.getY() + ((tank.getmDy()) * Math.sin(Math.toRadians(tank.getmR()))));
     }
 
     private boolean moveValid(TankData tank) {
-        TankData temp = tank;
+        TankData temp = (TankData) tank.clone();
         moveTank(temp);
         for (Rectangle2D wall : serverModel.getGameMap().getWalls()) {
             if (temp.intersects(wall)) {

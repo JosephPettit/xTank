@@ -82,7 +82,7 @@ public class TankData extends Rectangle implements Serializable {
         this.mDy = mDy;
     }
 
-    public double getmX() {
+    public double getX() {
         return mX;
     }
 
@@ -90,7 +90,7 @@ public class TankData extends Rectangle implements Serializable {
         this.mX = mX;
     }
 
-    public double getmY() {
+    public double getY() {
         return mY;
     }
 

@@ -42,11 +42,11 @@ public class Tank {
 	}
 
 	public double getmX() {
-		return data.getmX();
+		return data.getX();
 	}
 
 	public double getmY() {
-		return data.getmY();
+		return data.getY();
 	}
 
 	public void setmR(int mR) {

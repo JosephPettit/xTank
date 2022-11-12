@@ -72,9 +72,12 @@ public class ClientController {
               tank.setmDr(1);
             }
 
-            tank.setmR((tank.getmR() + (tank.getmDy() < 0 ? -1 * tank.getmDr() : tank.getmDr())) % 360);
-            tank.setmX(tank.getmX() + ((tank.getmDy()) * Math.cos(Math.toRadians(tank.getmR()))));
-            tank.setmY(tank.getmY() + ((tank.getmDy()) * Math.sin(Math.toRadians(tank.getmR()))));
+            // tank.setmR((tank.getmR() + (tank.getmDy() < 0 ? -1 * tank.getmDr() :
+            // tank.getmDr())) % 360);
+            // tank.setmX(tank.getX() + ((tank.getmDy()) *
+            // Math.cos(Math.toRadians(tank.getmR()))));
+            // tank.setmY(tank.getY() + ((tank.getmDy()) *
+            // Math.sin(Math.toRadians(tank.getmR()))));
 
           }
         });
