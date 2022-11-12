@@ -13,8 +13,12 @@ public class GameState implements Serializable {
     }
 
     public void playerHit(int playerNumber){
-        players.get(playerNumber).playerHit();
+        for(Player player : players){
+            if(player.getPlayerNumber() == playerNumber)
+                player.playerHit();
+        }
     }
+    
     public TankData addPlayer(String color, int playerNumber) {
         TankData newTank = new TankData(color, playerNumber);
         players.add(new Player(playerNumber));

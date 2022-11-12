@@ -8,6 +8,7 @@ import java.net.UnknownHostException;
 
 import javax.swing.JOptionPane;
 
+import GameMaps.GameMap;
 import SharedResources.GameState;
 
 public class ServerConnection {
@@ -15,6 +16,9 @@ public class ServerConnection {
     private ObjectInputStream objIn;
     private ObjectOutputStream objOut;
     private GameState initialData;
+    private GameMap gameMap;
+
+
     private int playerNumber;
     private String color;
 
@@ -35,6 +39,9 @@ public class ServerConnection {
                 JOptionPane.QUESTION_MESSAGE, null, strArr, strArr[0]);
         objOut.writeObject(color);
 
+        // Client <- Server: gameMap
+        gameMap = (GameMap) objIn.readObject();
+        
         // Client <- Server: gameState
         initialData = (GameState) objIn.readObject();
 
@@ -63,5 +70,9 @@ public class ServerConnection {
 
     public String getColor() {
         return color;
+    }
+
+    public GameMap getGameMap() {
+        return gameMap;
     }
 }

@@ -3,10 +3,10 @@ package xTankClientGUI;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import GameMaps.GameMap;
 import SharedResources.GameState;
 
 public class ClientFrame extends JFrame {
@@ -48,5 +48,9 @@ public class ClientFrame extends JFrame {
 
 	public void addGamePanelTimerListener(ActionListener actionListener) {
 		gamePanel.addGameTimerListener(actionListener);
+	}
+
+	public void addGameMap(GameMap gameMap) {
+		gamePanel.addGameMap(gameMap);
 	}
 }
