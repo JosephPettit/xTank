@@ -60,15 +60,6 @@ public class GamePanel extends JPanel {
 					g2d.drawImage(new ImageIcon(getClass().getResource("Assets/missile.png")).getImage(),
 							(int) missile.getX(), (int) missile.getY(), this);
 			}
-
-			// TODO: Johnny - How did you do this magic with g2d.drawImage(new
-			// ImageIcon(getClass().getResource("Assets/missile.png")).getImage()
-			// if we can do the same thing on line 55 instead of craft.getImage, use your
-			// magic and have it use the string in data (TankData).
-			// we can delete the Tank class for simplicity and just use the methods in
-			// data(TankData).
-
-			// I promise I tried, and it's not working for me. <3 Joe
 		}
 
 		Toolkit.getDefaultToolkit().sync();

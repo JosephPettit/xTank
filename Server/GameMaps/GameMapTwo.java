@@ -27,15 +27,21 @@ public class GameMapTwo extends GameMap {
         // Below are all perpendicular (maze) walls
 
         // Top
-        walls.add(new Rectangle2D.Double(450, 0, 10, 200));
-        walls.add(new Rectangle2D.Double(GAME_WIDTH-450, 0, 10, 200));
+        Rectangle2D.Double obs1 = new Rectangle2D.Double(450, 0, 10, 200);
+        Rectangle2D.Double obs2 = new Rectangle2D.Double(GAME_WIDTH - 450, 0, 10, 200);
+        walls.add(obs1);
+        walls.add(obs2);
 
         // Sides
-        walls.add(new Rectangle2D.Double(0, GAME_HEIGHT/2, 125, 10));
-        walls.add(new Rectangle2D.Double(GAME_WIDTH-150, GAME_HEIGHT/2, 125, 10));
-        
-        //Bottom
-        walls.add(new Rectangle2D.Double(450, GAME_HEIGHT-200, 10, 100));
-        walls.add(new Rectangle2D.Double(GAME_WIDTH-450, GAME_HEIGHT-200, 10, 100));
+        Rectangle2D.Double obs3 = new Rectangle2D.Double(0, GAME_HEIGHT / 2, 125, 10);
+        Rectangle2D.Double obs4 = new Rectangle2D.Double(GAME_WIDTH - 150, GAME_HEIGHT / 2, 125, 10);
+        walls.add(obs3);
+        walls.add(obs4);
+
+        // Bottom
+        Rectangle2D.Double obs5 = new Rectangle2D.Double(450, GAME_HEIGHT - 200, 10, 100);
+        Rectangle2D.Double obs6 = new Rectangle2D.Double(GAME_WIDTH - 450, GAME_HEIGHT - 200, 10, 100);
+        walls.add(obs5);
+        walls.add(obs6);
     }
 }

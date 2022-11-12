@@ -6,9 +6,10 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.concurrent.Executor;
 
+import javax.swing.JOptionPane;
+
 import GameMaps.*;
 import SharedResources.GameState;
-import SharedResources.Missile;
 import SharedResources.TankData;
 
 public class ServerModel {
@@ -18,11 +19,18 @@ public class ServerModel {
     private int numPlayers;
     private GameState gameState;
     private GameMap gameMap;
+    private String[] availMaps;
 
     public ServerModel(Executor pool) {
         this.pool = pool;
         this.gameState = new GameState();
-        this.gameMap = new GameMapTwo();
+        this.availMaps = new String[] { "Easy", "Medium" };
+
+        this.gameMap = setMap((String) JOptionPane.showInputDialog(null,
+                "Almost started!\nPlease choose map from list below:",
+                "xTank Map Selection",
+                JOptionPane.QUESTION_MESSAGE, null, getAvailMaps(), getAvailMaps()[0]));
+                
         clientConnections = new ArrayList<>();
         tankColors = new ArrayList<>();
         tankColors.add("Yellow");
@@ -72,5 +80,23 @@ public class ServerModel {
 
     public synchronized GameMap getGameMap() {
         return gameMap;
+    }
+
+    public String[] getAvailMaps() {
+        return availMaps;
+    }
+
+    public GameMap setMap(String selection) {
+        return switch (selection) {
+            case "Easy" -> {
+                yield new GameMapOne();
+            }
+
+            case "Medium" -> {
+                yield new GameMapTwo();
+            }
+
+            default -> throw new IllegalArgumentException("Unexpected value: " + selection);
+        };
     }
 }
