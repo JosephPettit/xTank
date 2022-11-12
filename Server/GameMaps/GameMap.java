@@ -1,4 +1,4 @@
-package SharedResources.GameMaps;
+package GameMaps;
 
 import java.awt.Color;
 import java.awt.Graphics;

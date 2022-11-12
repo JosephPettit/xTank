@@ -17,10 +17,10 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
+import GameMaps.GameMap;
+import GameMaps.GameMapOne;
 import SharedResources.GameState;
 import SharedResources.TankData;
-import SharedResources.GameMaps.GameMap;
-import SharedResources.GameMaps.GameMapOne;
 
 public class GamePanel extends JPanel{
 
