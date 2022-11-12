@@ -4,25 +4,31 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class GameState implements Serializable {
-    private ArrayList<TankData> players;
+    private ArrayList<TankData> playerTanks;
+    private ArrayList<Player> players;
 
     public GameState() {
+        playerTanks = new ArrayList<>();
         players = new ArrayList<>();
     }
 
+    public void playerHit(int playerNumber){
+        players.get(playerNumber).playerHit();
+    }
     public TankData addPlayer(String color, int playerNumber) {
-        TankData newPlayer = new TankData(color, playerNumber);
-        players.add(newPlayer);
-        return newPlayer;
+        TankData newTank = new TankData(color, playerNumber);
+        players.add(new Player(playerNumber));
+        playerTanks.add(newTank);
+        return newTank;
     }
 
-    public synchronized ArrayList<TankData> getPlayers() {
-        return players;
+    public synchronized ArrayList<TankData> getPlayerTanks() {
+        return playerTanks;
     }
 
     public synchronized ArrayList<Missile> getAllMissiles() {
         ArrayList<Missile> rtnList = new ArrayList<>();
-        for (TankData player : players) {
+        for (TankData player : playerTanks) {
             rtnList.addAll(player.getMissiles());
         }
         return rtnList;
@@ -30,7 +36,7 @@ public class GameState implements Serializable {
 
     @Override
     public String toString() {
-        return "GameState [\nplayers=" + players + "\n]";
+        return "GameState [\nplayers=" + playerTanks + "\n]";
     }
 
 }

@@ -39,8 +39,6 @@ public class GamePanel extends JPanel {
 
 	public void paint(Graphics g) {
 
-		
-
 		super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
 		RenderingHints rh = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -48,10 +46,11 @@ public class GamePanel extends JPanel {
 		AffineTransform reset = g2d.getTransform();
 
 		gameMap.paintComponent(g2d);
-		for (TankData data : gameState.getPlayers()) {
+		for (TankData data : gameState.getPlayerTanks()) {
 
 			g2d.rotate(Math.toRadians(data.getmR()), data.getX() + 10, data.getY() + 10);
-			g2d.drawImage(new ImageIcon(getClass().getResource(data.getTankColor())).getImage(), (int) data.getX(), (int) data.getY(), this);
+			g2d.drawImage(new ImageIcon(getClass().getResource(data.getTankColor())).getImage(), (int) data.getX(),
+					(int) data.getY(), this);
 
 			g2d.setTransform(reset);
 
@@ -66,8 +65,8 @@ public class GamePanel extends JPanel {
 		g.dispose();
 	}
 
-	// TODO: add game information in bottom 'panel', player, health etc. 
-	
+	// TODO: add game information in bottom 'panel', player, health etc.
+
 	void addInputActionListener(KeyListener listenForKey) {
 		this.addKeyListener(listenForKey);
 	}
