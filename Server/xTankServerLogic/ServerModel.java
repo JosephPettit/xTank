@@ -6,8 +6,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.concurrent.Executor;
 
-import GameMaps.GameMap;
-import GameMaps.GameMapOne;
+import GameMaps.*;
 import SharedResources.GameState;
 import SharedResources.Missile;
 import SharedResources.TankData;
@@ -23,7 +22,7 @@ public class ServerModel {
     public ServerModel(Executor pool) {
         this.pool = pool;
         this.gameState = new GameState();
-        this.gameMap = new GameMapOne();
+        this.gameMap = new GameMapTwo();
         clientConnections = new ArrayList<>();
         tankColors = new ArrayList<>();
         tankColors.add("Yellow");

@@ -13,8 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import GameMaps.GameMap;
-import GameMaps.GameMapOne;
+import GameMaps.*;
 import SharedResources.GameState;
 import SharedResources.Missile;
 import SharedResources.TankData;
@@ -36,7 +35,7 @@ public class GamePanel extends JPanel {
 		timer = new Timer(5, null);
 		timer.setInitialDelay(10);
 		timer.start();
-		this.gameMap = new GameMapOne();
+		this.gameMap = new GameMapTwo();
 	}
 
 	public void paint(Graphics g) {
