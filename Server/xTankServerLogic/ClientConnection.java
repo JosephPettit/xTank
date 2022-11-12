@@ -128,7 +128,7 @@ public class ClientConnection implements Runnable {
         return true;
     }
 
-    // TODO: Check bounds of scooby logic
+    // TODO: scooby doo logic broken now that panels are removed. 
     private void scoobyDooLogic(TankData tank) {
         if (tank.getX() >= GameMap.GAME_WIDTH - 30) {
             tank.setmX(0);
@@ -139,7 +139,7 @@ public class ClientConnection implements Runnable {
         if (tank.getY() <= 0) {
             tank.setmY(500);
         } else if (tank.getY() > 500) {
-            tank.setmY(0);
+            tank.setmY(10);
         }
 
     }

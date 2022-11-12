@@ -1,47 +1,47 @@
-package xTankClientGUI;
+// package xTankClientGUI;
 
-import java.awt.BorderLayout;
-import java.awt.CardLayout;
+// import java.awt.BorderLayout;
+// import java.awt.CardLayout;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
+// import javax.swing.JPanel;
+// import javax.swing.JLabel;
 
-public class ClientCardPanel extends JPanel {
-	private CardLayout cardLayout;
-	private BorderLayout borderLayout;
-	private JPanel cardPanel;
+// public class ClientCardPanel extends JPanel {
+// 	private CardLayout cardLayout;
+// 	private BorderLayout borderLayout;
+// 	private JPanel cardPanel;
 	
-	/**
-	 * Create the panel.
-	 */
-	public ClientCardPanel() {
-		super();
-		borderLayout = new BorderLayout(0, 0);
-		setLayout(borderLayout);
+// 	/**
+// 	 * Create the panel.
+// 	 */
+// 	public ClientCardPanel() {
+// 		super();
+// 		borderLayout = new BorderLayout(0, 0);
+// 		setLayout(borderLayout);
 		
-		cardLayout = new CardLayout();
-		cardPanel = new JPanel(cardLayout);
-		add(cardPanel, BorderLayout.CENTER);
+// 		cardLayout = new CardLayout();
+// 		cardPanel = new JPanel(cardLayout);
+// 		add(cardPanel, BorderLayout.CENTER);
 		
-		JPanel panel = new JPanel();
-		add(panel, BorderLayout.NORTH);
-		// TODO: Remove or add panel somewhere
-		JLabel lblNewLabel = new JLabel("Game info here?");
-		panel.add(lblNewLabel);
+// 		JPanel panel = new JPanel();
+// 		add(panel, BorderLayout.NORTH);
+// 		// TODO: Remove or add panel somewhere
+// 		JLabel lblNewLabel = new JLabel("Game info here?");
+// 		panel.add(lblNewLabel);
 		
-		JPanel panel_1 = new JPanel();
-		add(panel_1, BorderLayout.SOUTH);
+// 		JPanel panel_1 = new JPanel();
+// 		add(panel_1, BorderLayout.SOUTH);
 		
-		JLabel lblOrMaybeDown = new JLabel("Or Maybe down here?");
-		panel_1.add(lblOrMaybeDown);
-	}
+// 		JLabel lblOrMaybeDown = new JLabel("Or Maybe down here?");
+// 		panel_1.add(lblOrMaybeDown);
+// 	}
 	
-	void addCard(JPanel panel) {
-		cardPanel.add(panel);
-	}
+// 	void addCard(JPanel panel) {
+// 		cardPanel.add(panel);
+// 	}
 	
-	void cycleCard() {
-		cardLayout.next(cardPanel);
-	}
+// 	void cycleCard() {
+// 		cardLayout.next(cardPanel);
+// 	}
 
-}
+// }

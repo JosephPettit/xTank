@@ -16,6 +16,7 @@ public class ServerConnection {
     private ObjectOutputStream objOut;
     private GameState initialData;
     private int playerNumber;
+    private String color;
 
     public void connectToServer(String ipAddress) throws UnknownHostException, IOException, ClassNotFoundException {
         socket = new Socket(ipAddress, 58901);
@@ -28,10 +29,11 @@ public class ServerConnection {
         // Client <- Server: list of available colors from server
         String[] strArr = (String[]) objIn.readObject();
         // Client -> Server: color selection from dialog
-        objOut.writeObject(JOptionPane.showInputDialog(null,
+        color = (String) JOptionPane.showInputDialog(null,
                 "Connected to " + socket.getInetAddress().getHostAddress() + "\n choose Tank color from list below",
                 "Tank Selection",
-                JOptionPane.QUESTION_MESSAGE, null, strArr, strArr[0]));
+                JOptionPane.QUESTION_MESSAGE, null, strArr, strArr[0]);
+        objOut.writeObject(color);
 
         // Client <- Server: gameState
         initialData = (GameState) objIn.readObject();
@@ -59,4 +61,7 @@ public class ServerConnection {
         return playerNumber;
     }
 
+    public String getColor() {
+        return color;
+    }
 }

@@ -1,10 +1,13 @@
 package xTankClientGUI;
 
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+
+import javax.swing.ImageIcon;
 
 import SharedResources.GameState;
 import SharedResources.TankData;
@@ -20,7 +23,7 @@ public class ClientController {
   public ClientController(ClientFrame clientFrame, ServerConnection serverConnection) {
     this.clientFrame = clientFrame;
     this.serverConnection = serverConnection;
-    this.clientFrame.cycleCard();
+    this.clientFrame.setIconImage(assignIcon(serverConnection.getColor()));
     this.clientFrame.setVisible(true);
     this.gameState = serverConnection.getInitialGameState();
     this.playerNumber = serverConnection.getPlayerNumber();
@@ -70,7 +73,7 @@ public class ClientController {
             if (key == KeyEvent.VK_RIGHT) {
               tank.setmDr(1);
             }
-            if(key == KeyEvent.VK_SPACE) {
+            if (key == KeyEvent.VK_SPACE) {
               tank.fire();
             }
           }
@@ -87,7 +90,7 @@ public class ClientController {
               tank = gameState.getPlayers().get(playerNumber);
               addGameState();
             } catch (IOException | ClassNotFoundException e1) {
-              // TODO: bubble up to be handled 
+              // TODO: bubble up to be handled
               clientFrame.displayErrorMessage(e1.toString());
               e1.printStackTrace();
             }
@@ -95,4 +98,25 @@ public class ClientController {
           }
         });
   }
+
+  private Image assignIcon(String tankColor) {
+    String image = null;
+    switch (tankColor) {
+      case "Yellow" -> {
+        image = "Assets/yellowTank.png";
+      }
+      case "Red" -> {
+        image = "Assets/redTank.png";
+      }
+      case "Blue" -> {
+        image = "Assets/blueTank.png";
+      }
+      case "Green" -> {
+        image = "Assets/greenTank.png";
+      }
+    }
+
+    return new ImageIcon(getClass().getResource(image)).getImage();
+  }
+
 }
