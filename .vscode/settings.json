@@ -1,4 +1,12 @@
 {
   "java.project.sourcePaths": ["Server", "Player", "Client", "Assets"],
-  "cSpell.words": ["getm", "nidk", "setm"]
+  "cSpell.words": [
+    "getm",
+    "missilexpos",
+    "missileypos",
+    "nidk",
+    "setm",
+    "xpos",
+    "ypos"
+  ]
 }

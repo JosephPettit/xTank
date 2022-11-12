@@ -1,8 +1,9 @@
 package SharedResources;
 
-import java.io.Serializable;
+import java.awt.Rectangle;
+import java.util.ArrayList;
 
-public class TankData implements Serializable {
+public class TankData extends Rectangle {
     private static final long serialVersionUID = 1L;
 
     private double mDx;
@@ -16,13 +17,14 @@ public class TankData implements Serializable {
 
     private final int playerNumber;
 
+    private ArrayList<Missile> missiles;
+
     public TankData(String tankColor, int playerNumber) {
         this.tankColor = assignColor(tankColor);
         this.playerNumber = playerNumber;
-
-        // assignColor();
+        this.missiles = new ArrayList<>();
+        setSize(20, 20);
         assignStartingLocation();
-
     }
 
     private String assignColor(String tankColor) {
@@ -43,6 +45,7 @@ public class TankData implements Serializable {
         };
     }
 
+    // TODO: add starting locations for player 3 & 4
     private void assignStartingLocation() {
         switch (playerNumber) {
             case 0 -> {
@@ -56,6 +59,24 @@ public class TankData implements Serializable {
                 mR = 180;
             }
         }
+    }
+
+    public void fire() {
+        if (missiles.size() >= 5) {
+            for (Missile missile : missiles) {
+                if (missile.isExploded())
+                    missiles.remove(missile);
+            }
+            if (missiles.size() >= 5)
+                missiles.remove(0);
+        }
+
+        missiles.add(new Missile(this));
+
+    }
+
+    public synchronized ArrayList<Missile> getMissiles() {
+        return missiles;
     }
 
     public int getPlayerNumber() {
@@ -82,7 +103,7 @@ public class TankData implements Serializable {
         this.mDy = mDy;
     }
 
-    public double getmX() {
+    public double getX() {
         return mX;
     }
 
@@ -90,7 +111,7 @@ public class TankData implements Serializable {
         this.mX = mX;
     }
 
-    public double getmY() {
+    public double getY() {
         return mY;
     }
 

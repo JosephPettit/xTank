@@ -6,11 +6,11 @@ import javax.swing.ImageIcon;
 import SharedResources.TankData;
 
 public class Tank {
-	// private String craft = "Assets/yellowTank.png";
-
 	private TankData data;
 	private Image mImage;
 
+	// TODO: can maybe be deleted if gamePanel is updated to include tank images
+	// from TankData
 	public Tank(TankData data) {
 		ImageIcon ii = new ImageIcon(getClass().getResource(data.getTankColor()));
 		mImage = ii.getImage();
@@ -42,11 +42,11 @@ public class Tank {
 	}
 
 	public double getmX() {
-		return data.getmX();
+		return data.getX();
 	}
 
 	public double getmY() {
-		return data.getmY();
+		return data.getY();
 	}
 
 	public void setmR(int mR) {

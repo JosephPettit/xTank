@@ -3,6 +3,7 @@ package xTankClientGUI;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -10,9 +11,8 @@ import SharedResources.GameState;
 
 public class ClientFrame extends JFrame {
 
-	static final int GAME_WIDTH = 1280;
-	static final int GAME_HEIGHT = 720;
-	private ClientCardPanel clientCardPanel;
+	public static final int GAME_WIDTH = 1280;
+	public static final int GAME_HEIGHT = 720;
 	private GamePanel gamePanel;
 
 	/**
@@ -25,25 +25,17 @@ public class ClientFrame extends JFrame {
 		setLocationRelativeTo(null);
 		setTitle("X-Tank Client");
 		setResizable(false);
-
 		setupPanels();
-
-		setContentPane(clientCardPanel);
+		setContentPane(gamePanel);
 	}
 
 	public void displayErrorMessage(String message) {
 		JOptionPane.showMessageDialog(this, message);
 	}
 
-	public void cycleCard() {
-		clientCardPanel.cycleCard();
-	}
-
 	private void setupPanels() {
-		clientCardPanel = new ClientCardPanel();
-		add(clientCardPanel);
 		gamePanel = new GamePanel();
-		clientCardPanel.addCard(gamePanel);
+		add(gamePanel);
 	}
 
 	public void addGamePanelKeyListener(KeyListener listener) {

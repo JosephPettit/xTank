@@ -16,7 +16,7 @@ public class Server implements Runnable {
   @Override
   public void run() {
     try (var listener = new ServerSocket(58901)) {
-
+      // TODO: make variable for multiple players 
       System.out.println("Waiting for client1");
       Socket socket = listener.accept();
       System.out.println("connected to " + socket.getInetAddress().getHostAddress());

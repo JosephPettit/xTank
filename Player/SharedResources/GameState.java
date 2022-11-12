@@ -20,9 +20,12 @@ public class GameState implements Serializable {
         return players;
     }
 
-    public synchronized void updatePlayer(TankData player) {
-        players.remove(player.getPlayerNumber());
-        players.add(player.getPlayerNumber(), player);
+    public synchronized ArrayList<Missile> getAllMissiles() {
+        ArrayList<Missile> rtnList = new ArrayList<>();
+        for (TankData player : players) {
+            rtnList.addAll(player.getMissiles());
+        }
+        return rtnList;
     }
 
     @Override

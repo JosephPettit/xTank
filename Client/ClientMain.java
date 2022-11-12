@@ -14,12 +14,10 @@ public class ClientMain {
 	private static ServerConnection serverConnection;
 
 	public static void main(String[] args) {
-
 		serverConnection = new ServerConnection();
 		connectToServer();
 		clientFrame = new ClientFrame();
 		new ClientController(clientFrame, serverConnection);
-		System.out.println("Main - " + Thread.currentThread().getName());
 	}
 
 	private static void connectToServer() {
@@ -30,7 +28,6 @@ public class ClientMain {
 		}
 
 		try {
-
 			serverConnection.connectToServer(ip);
 		} catch (ClassNotFoundException | IOException e) {
 
