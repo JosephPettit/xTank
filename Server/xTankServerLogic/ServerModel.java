@@ -33,11 +33,15 @@ public class ServerModel {
                 
         clientConnections = new ArrayList<>();
         tankColors = new ArrayList<>();
+        addTankColors();
+        numPlayers = 0;
+    }
+
+    private void addTankColors() {
         tankColors.add("Yellow");
         tankColors.add("Green");
         tankColors.add("Blue");
         tankColors.add("Red");
-        numPlayers = 0;
     }
 
     public void addConnection(ClientConnection connection) {
