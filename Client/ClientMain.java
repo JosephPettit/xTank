@@ -14,7 +14,9 @@ public class ClientMain {
 
 	public static void main(String[] args) {
 		serverConnection = new ServerConnection();
-		connectToServer();
+		// connectToServer(); // TODO: removed for testing
+		connectToServerTesting();
+
 		clientFrame = new ClientFrame();
 		new ClientController(clientFrame, serverConnection);
 	}
@@ -38,6 +40,14 @@ public class ClientMain {
 			} else {
 				System.exit(0);
 			}
+		}
+	}
+
+	private static void connectToServerTesting() {
+		try {
+			serverConnection.connectToServer("localhost");
+		} catch (ClassNotFoundException | IOException e) {
+			e.printStackTrace();
 		}
 	}
 

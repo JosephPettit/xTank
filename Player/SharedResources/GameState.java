@@ -12,18 +12,22 @@ public class GameState implements Serializable {
         players = new ArrayList<>();
     }
 
-    public void playerHit(int playerNumber){
-        for(Player player : players){
-            if(player.getPlayerNumber() == playerNumber)
+    public void playerHit(int playerNumber) {
+        for (Player player : players) {
+            if (player.getPlayerNumber() == playerNumber)
                 player.playerHit();
         }
     }
-    
+
     public TankData addPlayer(String color, int playerNumber) {
         TankData newTank = new TankData(color, playerNumber);
         players.add(new Player(playerNumber));
         playerTanks.add(newTank);
         return newTank;
+    }
+
+    public synchronized ArrayList<Player> getPlayers() {
+        return players;
     }
 
     public synchronized ArrayList<TankData> getPlayerTanks() {
