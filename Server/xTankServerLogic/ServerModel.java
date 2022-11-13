@@ -24,7 +24,7 @@ public class ServerModel {
     public ServerModel(Executor pool) {
         this.pool = pool;
         this.gameState = new GameState();
-        this.availMaps = new String[] { "Easy", "Medium" };
+        this.availMaps = new String[] { "Easy", "Medium", "Hard" };
 
         this.gameMap = setMap((String) JOptionPane.showInputDialog(null,
                 "Almost started!\nPlease choose map from list below:",
@@ -98,6 +98,10 @@ public class ServerModel {
 
             case "Medium" -> {
                 yield new GameMapTwo();
+            }
+
+            case "Hard" -> {
+                yield new GameMapThree();
             }
 
             default -> throw new IllegalArgumentException("Unexpected value: " + selection);
