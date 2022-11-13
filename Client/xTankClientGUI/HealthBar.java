@@ -20,8 +20,11 @@ public class HealthBar extends JComponent {
     private ArrayList<JLabel> bars;
     private String display; 
     private int x, y;
+    private Color color;
+    String healthMessage = "";
+
     public HealthBar(int player, int health, int x, int y) {
-        String healthMessage = "";
+        healthMessage = "";
         player++;
         switch(health){
             case 3:
@@ -38,7 +41,7 @@ public class HealthBar extends JComponent {
                 break;
 
         }
-        display = String.format("Player %d Health: %s", player, healthMessage);
+        display = String.format("Player %d Health: ", player);
         this.x = x;
         this.y = y;
     }
@@ -53,6 +56,8 @@ public class HealthBar extends JComponent {
 
         g2d.setColor(Color.WHITE);
         g2d.drawString(display, x,y);
+        g2d.setColor(Color.RED);
+        g2d.drawString(healthMessage, x + 90, y);
         
     }
 
