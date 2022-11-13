@@ -50,7 +50,7 @@ public class GamePanel extends JPanel {
 			gameMap.paintComponent(g2d);
 			for (TankData data : gameState.getPlayerTanks()) {
 
-				g2d.rotate(Math.toRadians(data.getmR()), data.getX() + 10, data.getY() + 10);
+				g2d.rotate(Math.toRadians(data.getmR()), data.getX() + 20, data.getY() + 20);
 				g2d.drawImage(new ImageIcon(getClass().getResource(data.getTankColor())).getImage(), (int) data.getX(),
 						(int) data.getY(), this);
 

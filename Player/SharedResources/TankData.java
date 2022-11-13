@@ -23,7 +23,7 @@ public class TankData extends Rectangle {
         this.tankColor = assignColor(tankColor);
         this.playerNumber = playerNumber;
         this.missiles = new ArrayList<>();
-        setSize(20, 20);
+        setSize(40, 40);
         assignStartingLocation();
     }
 
