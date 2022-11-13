@@ -15,6 +15,17 @@ The server will start with the selected settings and wait for each player to joi
 Run ClientMain.java and enter the IP address of the server ("localhost" if using the same computer as server).
 Each player will need to spin up and instance of ClientMain.java before the game will begin.
 
+### Playing the Game
+
+![image](https://user-images.githubusercontent.com/32590397/201501461-b4f9c80c-266f-445f-8c1d-b81c525f66cd.png)
+
+You will spawn in as the tank color you selected, this should help you keep track of who is who. Shoot the other tanks until they die!
+
+## Controls
+Up/Down: Move the tank forward and backward
+Left/Right: Rotate the tank on its axis
+Space: Fire a missile
+
 ## Server
 
 ***
