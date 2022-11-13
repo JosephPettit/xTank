@@ -30,7 +30,6 @@ public class ClientConnection implements Runnable {
         try {
             objOut = new ObjectOutputStream(this.socket.getOutputStream());
             objIn = new ObjectInputStream(this.socket.getInputStream());
-            System.out.println("connected to " + socket.getInetAddress().getHostName());
 
             // Handshake between client and server
             // server -> client: color list; server <- client: color selection
@@ -49,7 +48,7 @@ public class ClientConnection implements Runnable {
             objOut.writeObject("Hello from Server");
             System.out.println(objIn.readObject()); // hello from client
 
-            while (serverModel.getGameState() != null) {
+            while (serverModel.getGameState().isActive()) {
                 serverModel.setGameState((GameState) objIn.readObject());
                 objOut.writeObject(gameUpdate(serverModel.getGameState()));
             }
@@ -59,11 +58,13 @@ public class ClientConnection implements Runnable {
     }
 
     private synchronized GameState gameUpdate(GameState gameState) {
-
-        for (TankData player : gameState.getPlayerTanks()) {
-            tankAction(player);
-            moveMissile(player);
-        }
+        if (!GameLogic.checkWinner(gameState))
+            for (TankData player : gameState.getPlayerTanks()) {
+                tankAction(player);
+                moveMissile(player);
+            }
+        else 
+            gameState.setActive(false);
         return gameState;
     }
 

@@ -7,10 +7,12 @@ public class Player implements Serializable {
     private final int playerNumber;
     private long lastHit;
     private long current;
+    private boolean alive;
 
     public Player(int playerNumber) {
         this.playerNumber = playerNumber;
         health = 3;
+        alive = true;
     }
 
     public void playerHit() {
@@ -19,8 +21,15 @@ public class Player implements Serializable {
             lastHit = current;
             health--;
             System.out.println("I've been hit!");
+            if (health == 0) {
+                alive = false;
+            }
         }
 
+    }
+
+    public boolean isAlive() {
+        return alive;
     }
 
     public int getHealth() {
