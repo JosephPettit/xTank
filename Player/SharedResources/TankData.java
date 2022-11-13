@@ -4,9 +4,9 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 
 /**
- * X-Tank TankData class. 
+ * X-Tank TankData class.
  * 
- * Holds all tank location data and image information.  
+ * Holds all tank location data and image information.
  */
 public class TankData extends Rectangle {
     private static final long serialVersionUID = 1L;
@@ -56,7 +56,6 @@ public class TankData extends Rectangle {
         };
     }
 
-    // TODO: add starting locations for player 3 & 4
     private void assignStartingLocation() {
         switch (playerNumber) {
             case 0 -> {
@@ -65,8 +64,18 @@ public class TankData extends Rectangle {
                 mR = 0;
             }
             case 1 -> {
-                mX = 940;
+                mX = 1200;
                 mY = 60;
+                mR = 180;
+            }
+            case 2 -> {
+                mX = 40;
+                mY = 460;
+                mR = 0;
+            }
+            case 3 -> {
+                mX = 1200;
+                mY = 460;
                 mR = 180;
             }
         }

@@ -5,12 +5,9 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
 import java.awt.Font;
-import java.awt.event.ActionListener;
-
 import javax.swing.SwingConstants;
 import java.awt.FlowLayout;
 import javax.swing.JTextField;
-import javax.swing.JButton;
 
 public class ServerInformationPanel extends JPanel {
 
@@ -19,7 +16,6 @@ public class ServerInformationPanel extends JPanel {
 	private JPanel ipPanel;
 	private JLabel serverIP;
 	private JTextField serverIPUpdate;
-	private JButton btnCopyIP;
 
 	/**
 	 * Displays Server IP address
@@ -43,17 +39,10 @@ public class ServerInformationPanel extends JPanel {
 		serverIPUpdate.setColumns(8);
 		ipPanel.add(serverIPUpdate);
 
-		btnCopyIP = new JButton("Copy");
-
-		ipPanel.add(btnCopyIP);
 	}
 
 	void displayIP(String ipAddress) {
 		serverIPUpdate.setText(ipAddress);
-	}
-
-	void addCopyTextListener(ActionListener ListenForButton) {
-		btnCopyIP.addActionListener(ListenForButton);
 	}
 
 }

@@ -1,7 +1,5 @@
 package XTankServerGUI;
 
-import java.awt.event.ActionListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
@@ -22,10 +20,6 @@ public class ServerFrame extends JFrame {
 		setContentPane(runningPanel);
 		runningPanel.displayIP(ipAddress);
 		setIconImage(new ImageIcon(getClass().getResource("xtanklogo.png")).getImage());
-	}
-
-	public void addCopyButtonListener(ActionListener listener) {
-		runningPanel.addCopyTextListener(listener);
 	}
 
 	public void setIPAddress(String ipAddress) {
