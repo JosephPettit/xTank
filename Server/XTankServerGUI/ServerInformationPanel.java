@@ -5,17 +5,9 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.StringSelection;
-import java.awt.Toolkit;
-
 import javax.swing.SwingConstants;
 import java.awt.FlowLayout;
 import javax.swing.JTextField;
-import javax.swing.JButton;
 
 public class ServerInformationPanel extends JPanel {
 

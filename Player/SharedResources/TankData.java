@@ -56,7 +56,6 @@ public class TankData extends Rectangle {
         };
     }
 
-    // TODO: add starting locations for player 3 & 4
     private void assignStartingLocation() {
         switch (playerNumber) {
             case 0 -> {

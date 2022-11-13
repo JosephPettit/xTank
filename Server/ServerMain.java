@@ -3,8 +3,6 @@ import java.net.UnknownHostException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-import javax.swing.SwingUtilities;
-
 import XTankServerGUI.ServerFrame;
 import xTankServerLogic.Server;
 
