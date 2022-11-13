@@ -43,6 +43,7 @@ public class ClientMain {
 		}
 	}
 
+	// TODO: remove after testing 
 	private static void connectToServerTesting() {
 		try {
 			serverConnection.connectToServer("localhost");

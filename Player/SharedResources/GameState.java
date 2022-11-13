@@ -6,10 +6,12 @@ import java.util.ArrayList;
 public class GameState implements Serializable {
     private ArrayList<TankData> playerTanks;
     private ArrayList<Player> players;
+    private boolean active;
 
     public GameState() {
         playerTanks = new ArrayList<>();
         players = new ArrayList<>();
+        active = true;
     }
 
     public void playerHit(int playerNumber) {
@@ -42,9 +44,18 @@ public class GameState implements Serializable {
         return rtnList;
     }
 
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+    
     @Override
     public String toString() {
         return "GameState [\nplayers=" + playerTanks + "\n]";
     }
+
 
 }
