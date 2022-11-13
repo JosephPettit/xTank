@@ -48,7 +48,7 @@ public class ClientConnection implements Runnable {
             objOut.writeObject("Hello from Server");
             System.out.println(objIn.readObject()); // hello from client
 
-            while (serverModel.getGameState().isActive()) {
+            while (true) {
                 serverModel.setGameState((GameState) objIn.readObject());
                 objOut.writeObject(gameUpdate(serverModel.getGameState()));
             }
