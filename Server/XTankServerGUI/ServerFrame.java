@@ -2,70 +2,34 @@ package XTankServerGUI;
 
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 public class ServerFrame extends JFrame {
 
-	private ServerSettingsPanel settingsPanel;
-	private ServerRunningPanel runningPanel;
-	private ServerCardPanel serverCardPanel;
+	private ServerInformationPanel runningPanel;
 
 	/**
 	 * Create the frame.
 	 */
-	public ServerFrame() {
+	public ServerFrame(String ipAddress) {
 		super();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 100);
 		setLocationRelativeTo(null);
 		setTitle("X-Tank Server");
-		setupPanels();
-		setContentPane(serverCardPanel);
-
-	}
-
-	public void displayErrorMessage(String message) {
-		JOptionPane.showMessageDialog(this, message);
-	}
-
-	public void addServerButtonListener(ActionListener listener) {
-		serverCardPanel.addServerButtonListener(listener);
+		runningPanel = new ServerInformationPanel();
+		setContentPane(runningPanel);
+		runningPanel.displayIP(ipAddress);
+		setIconImage(new ImageIcon(getClass().getResource("xtanklogo.png")).getImage());
 	}
 
 	public void addCopyButtonListener(ActionListener listener) {
 		runningPanel.addCopyTextListener(listener);
 	}
 
-	public int retrievePlayers() {
-		return settingsPanel.getNumPlayers();
-	}
-
-	public void setServerStatus(String status) {
-		serverCardPanel.updateServerStatus(status);
-	}
-
-	public void cycleCard() {
-		serverCardPanel.cycleCard();
-	}
-
-	public void updateLog(String message) {
-		runningPanel.updateLog(message);
-	}
-
 	public void setIPAddress(String ipAddress) {
 		runningPanel.displayIP(ipAddress);
 	}
 
-	public void updateServerButtonText(String message) {
-		serverCardPanel.updateServerButtonText(message);
-	}
-
-	private void setupPanels() {
-		serverCardPanel = new ServerCardPanel();
-		settingsPanel = new ServerSettingsPanel();
-		runningPanel = new ServerRunningPanel();
-		serverCardPanel.addCard(settingsPanel, "Settings Panel");
-		serverCardPanel.addCard(runningPanel, "Running Panel");
-	}
 }

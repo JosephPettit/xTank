@@ -13,6 +13,9 @@ import GameMaps.GameMap;
 import SharedResources.GameState;
 import SharedResources.TankData;
 
+/**
+ * X-Tank Client window controller
+ */
 public class ClientController {
 
   private ClientFrame clientFrame;
@@ -50,6 +53,9 @@ public class ClientController {
     addGameTimerListener();
   }
 
+  /**
+   * Adds game listener for key presses and releases.
+   */
   private void addGameListener() {
     clientFrame.addGamePanelKeyListener(
         new KeyAdapter() {
@@ -85,6 +91,9 @@ public class ClientController {
         });
   }
 
+  /**
+   * Adds timer listener. GameState updates at the end of every timer cycle.
+   */
   private void addGameTimerListener() {
 
     clientFrame.addGamePanelTimerListener(
@@ -105,6 +114,9 @@ public class ClientController {
         });
   }
 
+  /**
+   * Assigns tank image paths from user's selection
+   */
   private Image assignIcon(String tankColor) {
     String image = null;
     switch (tankColor) {

@@ -3,6 +3,11 @@ package SharedResources;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * X - Tank GameState 
+ * 
+ * Holds all the game players, tanks, and missiles. 
+ */
 public class GameState implements Serializable {
     private ArrayList<TankData> playerTanks;
     private ArrayList<Player> players;

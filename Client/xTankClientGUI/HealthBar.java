@@ -5,29 +5,22 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.geom.Rectangle2D;
-import java.util.ArrayList;
-
 import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
-import GameMaps.GameMap;
-import SharedResources.Player;
-
+/**
+ * Displays the Player Health Area
+ */
 public class HealthBar extends JComponent {
 
-    private String display; 
+    private String display;
     private int x, y;
     private String healthMessage;
-    private int healthVal;
     private Color heartColor;
 
     public HealthBar(int player, int health, int x, int y) {
         healthMessage = "";
-        healthVal = health;
         player++;
-        switch(health){
+        switch (health) {
             case 3:
                 healthMessage = "\u2764\u2764\u2764";
                 heartColor = (Color.GREEN);
@@ -64,10 +57,10 @@ public class HealthBar extends JComponent {
         g2d.setRenderingHints(rh);
 
         g2d.setColor(Color.WHITE);
-        g2d.drawString(display, x,y);
+        g2d.drawString(display, x, y);
         g2d.setColor(heartColor);
         g2d.drawString(healthMessage, x + 90, y);
-        
+
     }
 
 }

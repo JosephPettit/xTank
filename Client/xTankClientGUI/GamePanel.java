@@ -19,13 +19,14 @@ import SharedResources.Missile;
 import SharedResources.Player;
 import SharedResources.TankData;
 
+/**
+ * Game Panel for holding current game state.
+ */
 public class GamePanel extends JPanel {
 
 	private Timer timer;
 	private GameState gameState;
 	private GameMap gameMap;
-	private HealthBar healthBar;
-
 	AffineTransform identity = new AffineTransform();
 
 	/**
@@ -38,6 +39,9 @@ public class GamePanel extends JPanel {
 		timer.start();
 	}
 
+	/**
+	 * Paints the current game state.
+	 */
 	public void paint(Graphics g) {
 
 		super.paint(g);
@@ -47,15 +51,19 @@ public class GamePanel extends JPanel {
 		AffineTransform reset = g2d.getTransform();
 
 		if (gameState.isActive()) {
-			gameMap.paintComponent(g2d);
-			for (TankData data : gameState.getPlayerTanks()) {
 
+			// Paint map
+			gameMap.paintComponent(g2d);
+
+			for (TankData data : gameState.getPlayerTanks()) {
+				// Paint tanks
 				g2d.rotate(Math.toRadians(data.getmR()), data.getX() + 10, data.getY() + 10);
 				g2d.drawImage(new ImageIcon(getClass().getResource(data.getTankColor())).getImage(), (int) data.getX(),
 						(int) data.getY(), this);
 
 				g2d.setTransform(reset);
 
+				// Paint Missiles
 				for (Missile missile : gameState.getAllMissiles()) {
 					if (!missile.isExploded())
 						g2d.drawImage(new ImageIcon(getClass().getResource("Assets/missile.png")).getImage(),
@@ -63,8 +71,8 @@ public class GamePanel extends JPanel {
 				}
 			}
 
+			// Health area display
 			int i = 0;
-
 			for (Player player : gameState.getPlayers()) {
 				HealthBar healthBar = new HealthBar(player.getPlayerNumber(), player.getHealth(), 10 + (i * 150),
 						GameMap.GAME_HEIGHT - 75);
@@ -72,6 +80,7 @@ public class GamePanel extends JPanel {
 				i++;
 			}
 		} else {
+			// Paint winning message
 			for (Player player : gameState.getPlayers()) {
 				if (player.isAlive()) {
 					WinnerMessage wm = new WinnerMessage(player);
@@ -83,8 +92,6 @@ public class GamePanel extends JPanel {
 		Toolkit.getDefaultToolkit().sync();
 		g.dispose();
 	}
-
-	// TODO: add game information in bottom 'panel', player, health etc.
 
 	void addInputActionListener(KeyListener listenForKey) {
 		this.addKeyListener(listenForKey);

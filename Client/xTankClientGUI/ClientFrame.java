@@ -16,7 +16,7 @@ public class ClientFrame extends JFrame {
 	private GamePanel gamePanel;
 
 	/**
-	 * Create the frame.
+	 * Client Window frame
 	 */
 	public ClientFrame() {
 		super();

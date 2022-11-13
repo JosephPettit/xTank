@@ -11,6 +11,9 @@ import javax.swing.JOptionPane;
 import GameMaps.GameMap;
 import SharedResources.GameState;
 
+/**
+ * X-Tank Client connection to X-Tank Server
+ */
 public class ServerConnection {
     private Socket socket;
     private ObjectInputStream objIn;
@@ -18,10 +21,14 @@ public class ServerConnection {
     private GameState initialData;
     private GameMap gameMap;
 
-
     private int playerNumber;
     private String color;
 
+    /**
+     * Client connection to server
+     * 
+     * @param ipAddress to connect to.
+     */
     public void connectToServer(String ipAddress) throws UnknownHostException, IOException, ClassNotFoundException {
         socket = new Socket(ipAddress, 58901);
         System.out.println("Connected to " + socket.getInetAddress().getHostName());
@@ -41,7 +48,7 @@ public class ServerConnection {
 
         // Client <- Server: gameMap
         gameMap = (GameMap) objIn.readObject();
-        
+
         // Client <- Server: gameState
         initialData = (GameState) objIn.readObject();
 

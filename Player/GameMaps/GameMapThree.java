@@ -3,6 +3,9 @@ package GameMaps;
 import java.awt.Color;
 import java.awt.geom.Rectangle2D;
 
+/**
+ * X-Tank Hard Game Map
+ */
 public class GameMapThree extends GameMap {
 
     private Rectangle2D.Double west;
@@ -47,7 +50,7 @@ public class GameMapThree extends GameMap {
         // Middle
         Rectangle2D.Double obs7 = new Rectangle2D.Double(250, 250, 10, 200);
         Rectangle2D.Double obs8 = new Rectangle2D.Double(GAME_WIDTH - 250, 250, 10, 200);
-        Rectangle2D.Double obs9 = new Rectangle2D.Double(GAME_WIDTH/2, 250, 10, 200);
+        Rectangle2D.Double obs9 = new Rectangle2D.Double(GAME_WIDTH / 2, 250, 10, 200);
         walls.add(obs7);
         walls.add(obs8);
         walls.add(obs9);

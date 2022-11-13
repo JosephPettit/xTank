@@ -3,6 +3,11 @@ package SharedResources;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
+/**
+ * X-Tank TankData class. 
+ * 
+ * Holds all tank location data and image information.  
+ */
 public class TankData extends Rectangle {
     private static final long serialVersionUID = 1L;
 
@@ -27,6 +32,12 @@ public class TankData extends Rectangle {
         assignStartingLocation();
     }
 
+    /**
+     * Assigns Players tank color
+     * 
+     * @param tankColor
+     * @return
+     */
     private String assignColor(String tankColor) {
         return switch (tankColor) {
             case "Yellow" -> {
@@ -61,6 +72,11 @@ public class TankData extends Rectangle {
         }
     }
 
+    /**
+     * Fires missile from tank.
+     * 
+     * If more than 5 missiles fired, last fired missile is destroyed.
+     */
     public void fire() {
         if (missiles.size() >= 5) {
             for (Missile missile : missiles) {
@@ -133,12 +149,6 @@ public class TankData extends Rectangle {
 
     public void setmDr(int mDr) {
         this.mDr = mDr;
-    }
-
-    @Override
-    public String toString() {
-        return "TankData [\nmDx=" + mDx + ", mDy=" + mDy + ", mX=" + mX + ", mY=" + mY + ", mR=" + mR + ", mDr=" + mDr
-                + ", playerNumber=" + playerNumber + "]";
     }
 
 }

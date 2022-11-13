@@ -9,6 +9,9 @@ import java.util.ArrayList;
 
 import javax.swing.JComponent;
 
+/**
+ * General template for Game Maps
+ */
 public abstract class GameMap extends JComponent {
     public static final int GAME_WIDTH = 1280;
     public static final int GAME_HEIGHT = 720;
