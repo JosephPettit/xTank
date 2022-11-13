@@ -64,9 +64,12 @@ public class GamePanel extends JPanel {
 			}
 		}
 
+		int i = 0;
+
 		for(Player player : gameState.getPlayers()){
-			HealthBar healthBar = new HealthBar(player.getPlayerNumber(), 0, GameMap.GAME_HEIGHT - 75);
+			HealthBar healthBar = new HealthBar(player.getPlayerNumber(), player.getHealth(), 10 + (i*150), GameMap.GAME_HEIGHT - 75);
 			healthBar.paintComponent(g2d);
+			i++;
 		}
 
 		Toolkit.getDefaultToolkit().sync();

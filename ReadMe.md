@@ -1,5 +1,20 @@
 # X-Tank information
 
+## How To Play
+### Run ServerMain.java
+
+![image](https://user-images.githubusercontent.com/32590397/201498782-1faa501e-c07a-4e31-9f9c-43a21bf4efe4.png)
+
+Run ServerMain.java and select which map you would like to use. Then select how many players (2-4).
+The server will start with the selected settings and wait for each player to join.
+
+### Run ClientMain.java
+
+![image](https://user-images.githubusercontent.com/32590397/201498846-946aead0-a8c7-4b2b-9105-ea89d50b6708.png)
+
+Run ClientMain.java and enter the IP address of the server ("localhost" if using the same computer as server).
+Each player will need to spin up and instance of ClientMain.java before the game will begin.
+
 ## Server
 
 ***
