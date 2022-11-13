@@ -20,8 +20,25 @@ public class HealthBar extends JComponent {
     private ArrayList<JLabel> bars;
     private String display; 
     private int x, y;
-    public HealthBar(int player, int x, int y) {
-        display = String.format("Player %d", player);
+    public HealthBar(int player, int health, int x, int y) {
+        String healthMessage = "";
+        player++;
+        switch(health){
+            case 3:
+                healthMessage = "\u2764\u2764\u2764";
+                break;
+            case 2:
+                healthMessage = "\u2764\u2764";
+                break;
+            case 1:
+                healthMessage = "\u2764";
+                break;
+            default:
+                healthMessage = "";
+                break;
+
+        }
+        display = String.format("Player %d Health: %s", player, healthMessage);
         this.x = x;
         this.y = y;
     }
