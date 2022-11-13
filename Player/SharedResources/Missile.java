@@ -2,6 +2,9 @@ package SharedResources;
 
 import java.awt.Rectangle;
 
+/**
+ * X-Tank Missile class.
+ */
 public class Missile extends Rectangle {
 
     private final int playerNumber;

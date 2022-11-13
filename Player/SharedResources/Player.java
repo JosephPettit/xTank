@@ -2,6 +2,9 @@ package SharedResources;
 
 import java.io.Serializable;
 
+/**
+ * X-tank player class.
+ */
 public class Player implements Serializable {
     private int health;
     private final int playerNumber;
@@ -15,6 +18,10 @@ public class Player implements Serializable {
         alive = true;
     }
 
+    /**
+     * If player tank is hit by missile, decrement health by 1.
+     * If health is 0, alive = false;
+     */
     public void playerHit() {
         current = System.currentTimeMillis();
         if (current >= lastHit + 500) {

@@ -22,7 +22,7 @@ public class ServerInformationPanel extends JPanel {
 	private JButton btnCopyIP;
 
 	/**
-	 * Create the panel.
+	 * Displays Server IP address
 	 */
 	public ServerInformationPanel() {
 		super();

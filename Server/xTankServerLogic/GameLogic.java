@@ -5,6 +5,12 @@ import SharedResources.Player;
 
 public class GameLogic {
 
+    /**
+     * Checks {@code GameState} for current winner.
+     * 
+     * @param game {@code GameState} object to be evaluated. 
+     * @return {@code True} if only one player is remaining. 
+     */
     public static boolean checkWinner(GameState game) {
         int temp = 0;
         for (Player player : game.getPlayers()) {

@@ -2,19 +2,18 @@ package XTankServerGUI;
 
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 public class ServerFrame extends JFrame {
 
 	private ServerInformationPanel runningPanel;
-	private final String ipAddress;
 
 	/**
 	 * Create the frame.
 	 */
 	public ServerFrame(String ipAddress) {
 		super();
-		this.ipAddress = ipAddress;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 100);
 		setLocationRelativeTo(null);
@@ -22,6 +21,7 @@ public class ServerFrame extends JFrame {
 		runningPanel = new ServerInformationPanel();
 		setContentPane(runningPanel);
 		runningPanel.displayIP(ipAddress);
+		setIconImage(new ImageIcon(getClass().getResource("xtanklogo.png")).getImage());
 	}
 
 	public void addCopyButtonListener(ActionListener listener) {

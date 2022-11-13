@@ -12,6 +12,9 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
+/**
+ * Displays Player win message at end of game.
+ */
 public class WinnerMessage extends JComponent {
 
     private String display;

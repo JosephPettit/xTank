@@ -3,6 +3,9 @@ package GameMaps;
 import java.awt.Color;
 import java.awt.geom.Rectangle2D;
 
+/**
+ * X - Tank Medium Game Map
+ */
 public class GameMapTwo extends GameMap {
 
     private Rectangle2D.Double west;
