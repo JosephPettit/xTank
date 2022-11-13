@@ -22,9 +22,9 @@ Each player will need to spin up and instance of ClientMain.java before the game
 You will spawn in as the tank color you selected, this should help you keep track of who is who. Shoot the other tanks until they die!
 
 ## Controls
-Up/Down: Move the tank forward and backward
-Left/Right: Rotate the tank on its axis
-Space: Fire a missile
+- Up/Down: Move the tank forward and backward
+- Left/Right: Rotate the tank on its axis
+- Space: Fire a missile
 
 ## Server
 
