@@ -46,30 +46,38 @@ public class GamePanel extends JPanel {
 		g2d.setRenderingHints(rh);
 		AffineTransform reset = g2d.getTransform();
 
-		// healthBar.paintComponent(g2d);
-		gameMap.paintComponent(g2d);
+		if (gameState.isActive()) {
+			gameMap.paintComponent(g2d);
+			for (TankData data : gameState.getPlayerTanks()) {
 
-		for (TankData data : gameState.getPlayerTanks()) {
+				g2d.rotate(Math.toRadians(data.getmR()), data.getX() + 10, data.getY() + 10);
+				g2d.drawImage(new ImageIcon(getClass().getResource(data.getTankColor())).getImage(), (int) data.getX(),
+						(int) data.getY(), this);
 
-			g2d.rotate(Math.toRadians(data.getmR()), data.getX() + 10, data.getY() + 10);
-			g2d.drawImage(new ImageIcon(getClass().getResource(data.getTankColor())).getImage(), (int) data.getX(),
-					(int) data.getY(), this);
+				g2d.setTransform(reset);
 
-			g2d.setTransform(reset);
-
-			for (Missile missile : gameState.getAllMissiles()) {
-				if (!missile.isExploded())
-					g2d.drawImage(new ImageIcon(getClass().getResource("Assets/missile.png")).getImage(),
-							(int) missile.getX(), (int) missile.getY(), this);
+				for (Missile missile : gameState.getAllMissiles()) {
+					if (!missile.isExploded())
+						g2d.drawImage(new ImageIcon(getClass().getResource("Assets/missile.png")).getImage(),
+								(int) missile.getX(), (int) missile.getY(), this);
+				}
 			}
-		}
 
-		int i = 0;
+			int i = 0;
 
-		for(Player player : gameState.getPlayers()){
-			HealthBar healthBar = new HealthBar(player.getPlayerNumber(), player.getHealth(), 10 + (i*150), GameMap.GAME_HEIGHT - 75);
-			healthBar.paintComponent(g2d);
-			i++;
+			for (Player player : gameState.getPlayers()) {
+				HealthBar healthBar = new HealthBar(player.getPlayerNumber(), player.getHealth(), 10 + (i * 150),
+						GameMap.GAME_HEIGHT - 75);
+				healthBar.paintComponent(g2d);
+				i++;
+			}
+		} else {
+			for (Player player : gameState.getPlayers()) {
+				if (player.isAlive()) {
+					WinnerMessage wm = new WinnerMessage(player);
+					wm.paintComponent(g2d);
+				}
+			}
 		}
 
 		Toolkit.getDefaultToolkit().sync();

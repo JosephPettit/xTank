@@ -31,6 +31,7 @@ public class ClientController {
     this.gameMap = serverConnection.getGameMap();
     this.playerNumber = serverConnection.getPlayerNumber();
     this.tank = getGSTank();
+    this.clientFrame.setTitle("X-Tank Client: Player " + (playerNumber + 1));
     addGameStartInfo();
     setupListeners();
   }

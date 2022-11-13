@@ -19,7 +19,7 @@ public class HealthBar extends JComponent {
 
     private String display; 
     private int x, y;
-    private String healthMessage = "";
+    private String healthMessage;
     private int healthVal;
     private Color heartColor;
 
