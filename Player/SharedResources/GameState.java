@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * X - Tank GameState 
+ * X - Tank GameState
  * 
- * Holds all the game players, tanks, and missiles. 
+ * Holds all the game players, tanks, and missiles.
  */
 public class GameState implements Serializable {
     private ArrayList<TankData> playerTanks;
@@ -33,6 +33,14 @@ public class GameState implements Serializable {
         return newTank;
     }
 
+    public synchronized Player getPlayer(int playerNumber) {
+        for (Player player : players) {
+            if (player.getPlayerNumber() == playerNumber)
+                return player;
+        }
+        return null;
+    }
+
     public synchronized ArrayList<Player> getPlayers() {
         return players;
     }
@@ -56,11 +64,10 @@ public class GameState implements Serializable {
     public void setActive(boolean active) {
         this.active = active;
     }
-    
+
     @Override
     public String toString() {
         return "GameState [\nplayers=" + playerTanks + "\n]";
     }
-
 
 }

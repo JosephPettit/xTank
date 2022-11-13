@@ -24,10 +24,6 @@ public class ServerFrame extends JFrame {
 		setIconImage(new ImageIcon(getClass().getResource("xtanklogo.png")).getImage());
 	}
 
-	public void addCopyButtonListener(ActionListener listener) {
-		runningPanel.addCopyTextListener(listener);
-	}
-
 	public void setIPAddress(String ipAddress) {
 		runningPanel.displayIP(ipAddress);
 	}

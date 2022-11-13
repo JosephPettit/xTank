@@ -57,10 +57,12 @@ public class GamePanel extends JPanel {
 
 			for (TankData data : gameState.getPlayerTanks()) {
 				// Paint tanks
-				g2d.rotate(Math.toRadians(data.getmR()), data.getX() + 10, data.getY() + 10);
-				g2d.drawImage(new ImageIcon(getClass().getResource(data.getTankColor())).getImage(), (int) data.getX(),
-						(int) data.getY(), this);
-
+				if (gameState.getPlayer(data.getPlayerNumber()).isAlive()) {
+					g2d.rotate(Math.toRadians(data.getmR()), data.getX() + 10, data.getY() + 10);
+					g2d.drawImage(new ImageIcon(getClass().getResource(data.getTankColor())).getImage(),
+							(int) data.getX(),
+							(int) data.getY(), this);
+				}
 				g2d.setTransform(reset);
 
 				// Paint Missiles
@@ -79,8 +81,8 @@ public class GamePanel extends JPanel {
 				healthBar.paintComponent(g2d);
 				i++;
 			}
-		} else {
-			// Paint winning message
+		} else { // Paint winning message
+
 			for (Player player : gameState.getPlayers()) {
 				if (player.isAlive()) {
 					WinnerMessage wm = new WinnerMessage(player);

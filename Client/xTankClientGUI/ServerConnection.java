@@ -40,11 +40,16 @@ public class ServerConnection {
         // Client <- Server: list of available colors from server
         String[] strArr = (String[]) objIn.readObject();
         // Client -> Server: color selection from dialog
-        color = (String) JOptionPane.showInputDialog(null,
-                "Connected to " + socket.getInetAddress().getHostAddress() + "\n choose Tank color from list below",
-                "Tank Selection",
-                JOptionPane.QUESTION_MESSAGE, null, strArr, strArr[0]);
-        objOut.writeObject(color);
+        if (strArr.length != 1) {
+            color = (String) JOptionPane.showInputDialog(null,
+                    "Connected to " + socket.getInetAddress().getHostAddress() + "\n choose Tank color from list below",
+                    "Tank Selection",
+                    JOptionPane.QUESTION_MESSAGE, null, strArr, strArr[0]);
+            objOut.writeObject(color);
+        } else {
+            color = strArr[0];
+            objOut.writeObject(color);
+        }
 
         // Client <- Server: gameMap
         gameMap = (GameMap) objIn.readObject();
