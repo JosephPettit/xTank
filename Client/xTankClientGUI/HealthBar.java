@@ -17,27 +17,36 @@ import SharedResources.Player;
 
 public class HealthBar extends JComponent {
 
-    private ArrayList<JLabel> bars;
     private String display; 
     private int x, y;
-    private Color color;
-    String healthMessage = "";
+    private String healthMessage = "";
+    private int healthVal;
+    private Color heartColor;
 
     public HealthBar(int player, int health, int x, int y) {
         healthMessage = "";
+        healthVal = health;
         player++;
         switch(health){
             case 3:
                 healthMessage = "\u2764\u2764\u2764";
+                heartColor = (Color.GREEN);
                 break;
             case 2:
                 healthMessage = "\u2764\u2764";
+                heartColor = (Color.YELLOW);
                 break;
             case 1:
                 healthMessage = "\u2764";
+                heartColor = (Color.RED);
+                break;
+            case 0:
+                healthMessage = "\u2620";
+                heartColor = (Color.WHITE);
                 break;
             default:
-                healthMessage = "";
+                healthMessage = "\u2620";
+                heartColor = (Color.WHITE);
                 break;
 
         }
@@ -56,7 +65,7 @@ public class HealthBar extends JComponent {
 
         g2d.setColor(Color.WHITE);
         g2d.drawString(display, x,y);
-        g2d.setColor(Color.RED);
+        g2d.setColor(heartColor);
         g2d.drawString(healthMessage, x + 90, y);
         
     }
