@@ -5,27 +5,17 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.geom.Rectangle2D;
-import java.util.ArrayList;
-
 import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
-import GameMaps.GameMap;
-import SharedResources.Player;
 
 public class HealthBar extends JComponent {
 
     private String display; 
     private int x, y;
     private String healthMessage;
-    private int healthVal;
     private Color heartColor;
 
     public HealthBar(int player, int health, int x, int y) {
         healthMessage = "";
-        healthVal = health;
         player++;
         switch(health){
             case 3:

@@ -5,8 +5,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-import GameMaps.GameMap;
-
 import java.awt.geom.Rectangle2D;
 
 import SharedResources.GameState;
@@ -63,7 +61,7 @@ public class ClientConnection implements Runnable {
                 tankAction(player);
                 moveMissile(player);
             }
-        else 
+        else
             gameState.setActive(false);
         return gameState;
     }
@@ -71,7 +69,7 @@ public class ClientConnection implements Runnable {
     private void tankAction(TankData tank) {
         if (moveValid(tank)) {
             moveTank(tank);
-            scoobyDooLogic(tank);
+
         } else {
             tank.setmDr(0);
             tank.setmDx(0);
@@ -127,22 +125,6 @@ public class ClientConnection implements Runnable {
                 return false;
         }
         return true;
-    }
-
-    // TODO: scooby doo logic broken now that panels are removed.
-    private void scoobyDooLogic(TankData tank) {
-        if (tank.getX() >= GameMap.GAME_WIDTH - 30) {
-            tank.setmX(0);
-        } else if (tank.getX() <= 0) {
-            tank.setmX(GameMap.GAME_WIDTH - 30);
-        }
-
-        if (tank.getY() <= 0) {
-            tank.setmY(500);
-        } else if (tank.getY() > 500) {
-            tank.setmY(10);
-        }
-
     }
 
 }

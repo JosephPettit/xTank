@@ -24,8 +24,6 @@ public class GamePanel extends JPanel {
 	private Timer timer;
 	private GameState gameState;
 	private GameMap gameMap;
-	private HealthBar healthBar;
-
 	AffineTransform identity = new AffineTransform();
 
 	/**
@@ -83,8 +81,6 @@ public class GamePanel extends JPanel {
 		Toolkit.getDefaultToolkit().sync();
 		g.dispose();
 	}
-
-	// TODO: add game information in bottom 'panel', player, health etc.
 
 	void addInputActionListener(KeyListener listenForKey) {
 		this.addKeyListener(listenForKey);

@@ -3,7 +3,6 @@ package XTankServerGUI;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 public class ServerFrame extends JFrame {
 
@@ -23,7 +22,6 @@ public class ServerFrame extends JFrame {
 		runningPanel = new ServerInformationPanel();
 		setContentPane(runningPanel);
 		runningPanel.displayIP(ipAddress);
-
 	}
 
 	public void addCopyButtonListener(ActionListener listener) {
